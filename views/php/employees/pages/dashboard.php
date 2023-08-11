@@ -140,38 +140,41 @@ ob_start();
     <!-- Schedule Time -->
     <article class="col-lg-4 col-md-4 order-3">
       <div class="row">
+        <!-- Latest Formation -->
         <article class="col-12 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between pb-0">
               <div class="card-title mb-0">
-                <h5 class="m-0 me-2">Schedule Work</h5>
-                <small class="text-muted">Weekly Schedule Work</small>
+                <h5 class="m-0 me-2">Latest Formation</h5>
+                <small class="text-muted">Newly Formation</small>
               </div>
               <div class="dropdown">
                 <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-                  <a class="dropdown-item" href="my_work_schedule.php">View All</a>
+                  <a class="dropdown-item" href="list_formations.php">View All</a>
                   <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
                 </div>
               </div>
             </div>
             <div class="card-body mt-4">
               <ul class="list-unstyled m-0">
-                <?php foreach ($latestReports as $report) : ?>
+                <?php foreach ($latestFormation as $formation) : ?>
                   <li class="d-flex align-items-center gap-4 mb-3">
                     <div class="d-flex flex-shrink-0 justify-content-center align-items-center me-3">
-                      <span class="avatar avatar-md rounded-circle bg-label-primary" style="display: flex;justify-content: center;align-items: center;"><i class="bx bx-file"></i></span>
+                      <span class="avatar avatar-md rounded-circle " style="display: flex;justify-content: center;align-items: center;background:salmon;color:#fff"><i class="bx bx-book"></i></span>
                     </div>
                     <div class="d-flex flex-column">
                       <h6 class="mb-0">
-                        <?= $report['subject'] ?>
+                        <?= $formation['title'] ?>
                       </h6>
-                      <small class="text-muted">By: <?= $report['full_name'] ?></small>
+                      <small class="text-muted">By: <?= $_SESSION['name'] ?></small>
                     </div>
                     <div class="d-flex flex-shrink-0 align-items-center">
-                      <small class="text-muted"><?= date('D - H:i', strtotime($report['date_sent'])) ?></small>
+                      <small class="text-muted">
+                        <?= date('M-d - H:i', strtotime($formation['date_sent'])) ?>
+                      </small>
                     </div>
                   </li>
                 <?php endforeach ?>
@@ -179,6 +182,7 @@ ob_start();
             </div>
           </div>
         </article>
+        <!--/ Latest Formation -->
       </div>
     </article>
     <!--/ Schedule Time -->
@@ -271,49 +275,6 @@ ob_start();
       </div>
     </article>
     <!--/ Latest Leaves Command -->
-    <!-- Latest Formation -->
-    <article class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-      <div class="card h-100">
-        <div class="card-header d-flex align-items-center justify-content-between pb-0">
-          <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Latest Formation</h5>
-            <small class="text-muted">Newly Formation</small>
-          </div>
-          <div class="dropdown">
-            <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="bx bx-dots-vertical-rounded"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="list_formations.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-            </div>
-          </div>
-        </div>
-        <div class="card-body mt-4">
-          <ul class="list-unstyled m-0">
-            <?php foreach ($latestFormation as $formation) : ?>
-              <li class="d-flex align-items-center gap-4 mb-3">
-                <div class="d-flex flex-shrink-0 justify-content-center align-items-center me-3">
-                  <span class="avatar avatar-md rounded-circle " style="display: flex;justify-content: center;align-items: center;background:salmon;color:#fff"><i class="bx bx-book"></i></span>
-                </div>
-                <div class="d-flex flex-column">
-                  <h6 class="mb-0">
-                    <?= $formation['title'] ?>
-                  </h6>
-                  <small class="text-muted">By: <?= $_SESSION['name'] ?></small>
-                </div>
-                <div class="d-flex flex-shrink-0 align-items-center">
-                  <small class="text-muted">
-                    <?= date('M-d - H:i', strtotime($formation['date_sent'])) ?>
-                  </small>
-                </div>
-              </li>
-            <?php endforeach ?>
-          </ul>
-        </div>
-      </div>
-    </article>
-    <!--/ Latest Formation -->
   </section>
   <!-- /Down -->
 </main>
