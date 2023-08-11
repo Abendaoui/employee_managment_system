@@ -1,4 +1,8 @@
 <?php
+if (isset($_GET['msg']) && isset($_GET['state'])) {
+  $msg = $_GET['msg'];
+  $state = $_GET['state'];
+}
 require '../../../../vendor/autoload.php';
 require_once '../layout/session_start.php';
 
@@ -13,13 +17,18 @@ $latestFormation = $employee->getLatestFormation();
 $latestLeaves = $employee->getLatestLeaves();
 $latestReports = $employee->getLatestReports();
 
+// Clock-Time
+$is_clock_in = $employee->hasClockIn();
+
+// print_r($is_clock_in);
+// exit;
 
 ob_start();
 ?>
 <main class="container-xxl flex-grow-1 container-p-y">
   <!-- Notification -->
   <?php if ($report > 0 || $formation > 0) : ?>
-    <div class="bs-toast toast fade show bg-primary custom-toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <article class="bs-toast toast fade show bg-primary custom-toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <i class="bx bx-bell me-2"></i>
         <div class="me-auto fw-semibold">Notifications</div>
@@ -29,7 +38,7 @@ ob_start();
       <div class="toast-body">
         You have <?= $report ?> new report(s) and <?= $formation ?> new formation(s) today.
       </div>
-    </div>
+    </article>
   <?php endif ?>
   <!-- /Notification -->
   <!-- Up -->
@@ -81,54 +90,39 @@ ob_start();
     </div>
     <!-- /Badge Model -->
 
-    <article class="col-lg-4 col-md-4 order-1">
+    <article class="col-lg-4 col-md-12 order-1">
       <div class="row">
-        <div class="col-lg-6 col-md-12 col-6 mb-4">
+        <div class="col-lg-12 col-md-12 col-12 mb-4">
           <div class="card">
-            <div class="card-body">
-              <div class="card-title d-flex align-items-start justify-content-between">
-                <div class="avatar flex-shrink-0">
-                  <img src="../../../../assets/img/icons/unicons/chart-success.png" alt="chart success" class="rounded" />
-                </div>
-                <div class="dropdown">
-                  <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                  </div>
-                </div>
-              </div>
-              <span class="fw-semibold d-block mb-1">Profit</span>
-              <h3 class="card-title mb-2">$12,628</h3>
-              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+            <div class="card-header">
+              Clock In / Clock Out
             </div>
+            <div class="card-body d-flex justify-content-between">
+              <?php if ($is_clock_in === 'n') : ?>
+                <form action="../helpers/clock-in.php" method="post" class="flex-grow-1 me-2">
+                  <div class="mb-3">
+                    <label for="clockIn" class="form-label">Clock In</label>
+                    <button type="submit" class="btn btn-primary" name="submit" id="clockIn">Clock In</button>
+                  </div>
+                </form>
+              <?php endif; ?>
+              <form action="../helpers/clock-out.php" method="post" class="flex-grow-1">
+                <div class="mb-3">
+                  <label for="clockOut" class="form-label">Clock Out</label>
+                  <button type="submit" class="btn btn-danger" name="submit" id="clockOut">Clock Out</button>
+                </div>
+              </form>
+            </div>
+
+            <?php if (isset($msg) && $msg !== '') : ?>
+              <div class="alert alert-<?php echo $state ? 'success' : 'danger';  ?> alert-dismissible mb-3 col-8 mx-auto" role="alert">
+                <?= $msg ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <?php endif ?>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 col-6 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title d-flex align-items-start justify-content-between">
-                <div class="avatar flex-shrink-0">
-                  <img src="../../../../assets/img/icons/unicons/wallet-info.png" alt="Credit Card" class="rounded" />
-                </div>
-                <div class="dropdown">
-                  <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                  </div>
-                </div>
-              </div>
-              <span>Sales</span>
-              <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-            </div>
-          </div>
-        </div>
+
       </div>
     </article>
     <!-- Total Present -->
@@ -143,56 +137,51 @@ ob_start();
       </div>
     </article>
     <!--/ Total Present -->
-    <article class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+    <!-- Schedule Time -->
+    <article class="col-lg-4 col-md-4 order-3">
       <div class="row">
-        <div class="col-6 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title d-flex align-items-start justify-content-between">
-                <div class="avatar flex-shrink-0">
-                  <img src="../../../../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                </div>
-                <div class="dropdown">
-                  <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                  </div>
+        <article class="col-12 mb-4">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center justify-content-between pb-0">
+              <div class="card-title mb-0">
+                <h5 class="m-0 me-2">Schedule Work</h5>
+                <small class="text-muted">Weekly Schedule Work</small>
+              </div>
+              <div class="dropdown">
+                <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
+                  <a class="dropdown-item" href="my_work_schedule.php">View All</a>
+                  <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
                 </div>
               </div>
-              <span class="d-block mb-1">Payments</span>
-              <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-              <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+            </div>
+            <div class="card-body mt-4">
+              <ul class="list-unstyled m-0">
+                <?php foreach ($latestReports as $report) : ?>
+                  <li class="d-flex align-items-center gap-4 mb-3">
+                    <div class="d-flex flex-shrink-0 justify-content-center align-items-center me-3">
+                      <span class="avatar avatar-md rounded-circle bg-label-primary" style="display: flex;justify-content: center;align-items: center;"><i class="bx bx-file"></i></span>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <h6 class="mb-0">
+                        <?= $report['subject'] ?>
+                      </h6>
+                      <small class="text-muted">By: <?= $report['full_name'] ?></small>
+                    </div>
+                    <div class="d-flex flex-shrink-0 align-items-center">
+                      <small class="text-muted"><?= date('D - H:i', strtotime($report['date_sent'])) ?></small>
+                    </div>
+                  </li>
+                <?php endforeach ?>
+              </ul>
             </div>
           </div>
-        </div>
-        <div class="col-6 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title d-flex align-items-start justify-content-between">
-                <div class="avatar flex-shrink-0">
-                  <img src="../../../../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
-                </div>
-                <div class="dropdown">
-                  <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                  </div>
-                </div>
-              </div>
-              <span class="fw-semibold d-block mb-1">Transactions</span>
-              <h3 class="card-title mb-2">$14,857</h3>
-              <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </article>
+    <!--/ Schedule Time -->
   </section>
   <!-- /Up -->
   <!-- Down -->

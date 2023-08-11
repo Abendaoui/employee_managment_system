@@ -193,7 +193,7 @@ class Employee
             return 'success'; // Return success code
         } catch (PDOException $e) {
             error_log('Error submitting report: ' . $e->getMessage());
-            return 'error'. $e->getMessage(); // Return error code
+            return 'error' . $e->getMessage(); // Return error code
         }
     }
     public function getEmployeesByDepartment()
@@ -417,6 +417,152 @@ class Employee
             return [
                 'error' => $e->getMessage()
             ];
+        }
+    }
+    // Clock the employee
+    public function clockIn()
+    {
+        $employee_id = $_SESSION['id']; // Assuming you have a getId method in the Employee class
+        $date = date("Y-m-d");
+        $entry_time = date("H:i:s");
+
+        // Check if a clock-in record exists for the current date
+        $sql_check = "SELECT id_pointage FROM pointages WHERE id_employe = :employee_id AND date = :date";
+        $stmt_check = $this->conn->prepare($sql_check);
+        $stmt_check->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+        $stmt_check->bindParam(':date', $date);
+        $stmt_check->execute();
+
+        if ($stmt_check->rowCount() > 0) {
+            return "already";
+        }
+
+        // Insert the clock-in data into the database
+        $sql_insert = "INSERT INTO pointages (id_employe, date, heure_entree) VALUES (:employee_id, :date, :entry_time)";
+        $stmt_insert = $this->conn->prepare($sql_insert);
+        $stmt_insert->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+        $stmt_insert->bindParam(':date', $date);
+        $stmt_insert->bindParam(':entry_time', $entry_time);
+        if ($stmt_insert->execute()) {
+            return "success";
+        } else {
+            return "Error: " . $stmt_insert->errorInfo()[2];
+        }
+    }
+    public function clockOut()
+    {
+        $employee_id = $_SESSION['id']; // Assuming you have a getId method in the Employee class
+        $date = date("Y-m-d");
+        $exit_time = date("H:i:s");
+
+        // Check if a clock-in record exists for the current date
+        $sql_check = "SELECT id_pointage, heure_entree FROM Pointages WHERE id_employe = :employee_id AND date = :date";
+        $stmt_check = $this->conn->prepare($sql_check);
+        $stmt_check->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+        $stmt_check->bindParam(':date', $date);
+        $stmt_check->execute();
+        $result = $stmt_check->fetchAll(PDO::FETCH_ASSOC);
+        $clockInTime = $result['heure_entree'];
+        if ($stmt_check->rowCount() === 0) {
+            return "check";
+        } else {
+            // ... Calculate hours worked based on your method ...
+            $hours_worked = $this->calculateHoursWorked($clockInTime, $exit_time);
+            $sql_update = "UPDATE Pointages SET heure_sortie = :exit_time, heures_totales = :hours_worked WHERE id_employe = :employee_id AND date = :date";
+            $stmt_update = $this->conn->prepare($sql_update);
+            $stmt_update->bindParam(':exit_time', $exit_time);
+            $stmt_update->bindParam(':hours_worked', $hours_worked);
+            $stmt_update->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+            $stmt_update->bindParam(':date', $date);
+            if ($stmt_update->execute()) {
+                return "success";
+            } else {
+                return "Error: " . $stmt_update->errorInfo()[2];
+            }
+        }
+    }
+    public function calculateHoursWorked($clockInTime, $clockOutTime)
+    {
+        $clockIn = new DateTime($clockInTime);
+        $clockOut = new DateTime($clockOutTime);
+
+        $interval = $clockOut->diff($clockIn);
+        $hours = $interval->h + ($interval->i / 60) + ($interval->s / 3600);
+
+        return $hours;
+    }
+    // public function clockOut2()
+    // {
+    //     try {
+    //         if (!$this->hasClockIn()) {
+    //             return "check";
+    //         }
+
+    //         $employee_id = $_SESSION['id'];
+    //         $exit_time = date("H:i:s");
+
+    //         // Get the clock-in time from the database
+    //         $sql_clock_in = "SELECT heure_entree FROM pointages WHERE id_employe = :employee_id AND date = :date";
+    //         $stmt_clock_in = $this->conn->prepare($sql_clock_in);
+    //         $stmt_clock_in->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+    //         $stmt_clock_in->bindParam(':date', $date);
+    //         $stmt_clock_in->execute();
+    //         $clockInTime = $stmt_clock_in->fetchColumn();
+
+    //         // Update
+    //         $hours_worked = $this->calculateHoursWorked($clockInTime, $exit_time);
+    //         $sql_update = "UPDATE pointages SET heure_sortie = :exit_time,heures_totales = :total  WHERE id_employe = :employee_id AND date = :date";
+    //         $stmt_update = $this->conn->prepare($sql_update);
+    //         $stmt_update->bindParam(':exit_time', $exit_time);
+    //         $stmt_update->bindParam(':total', $hours_worked);
+    //         $stmt_update->bindParam(
+    //             ':employee_id',
+    //             $employee_id,
+    //             PDO::PARAM_INT
+    //         );
+    //         $stmt_update->bindParam(':date', $date);
+
+    //         if ($stmt_update->execute()) {
+    //             return "success";
+    //         }
+    //     } catch (PDOException $e) {
+    //         return $e->getMessage();
+    //     }
+    // }
+    public function hasClockIn()
+    {
+        try {
+
+
+            $employee_id = $_SESSION['id']; // Assuming you have a getId method in the Employee class
+            $date = date("Y-m-d");
+
+            $sql_check = "SELECT id_pointage FROM Pointages WHERE id_employe = :employee_id AND date = :date";
+            $stmt_check = $this->conn->prepare($sql_check);
+            $stmt_check->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+            $stmt_check->bindParam(':date', $date);
+            $stmt_check->execute();
+
+            return $stmt_check->rowCount() > 0 ? 'y' : 'n';
+        } catch (PDOException $e) {
+            return 'error' . $e->getMessage();
+        }
+    }
+    public function hasClockOut()
+    {
+        try {
+            $employee_id = $_SESSION['id']; // Assuming you have a getId method in the Employee class
+            $date = date("Y-m-d");
+
+            $sql_check = "SELECT id_pointage FROM Pointages WHERE id_employe = :employee_id AND date = :date";
+            $stmt_check = $this->conn->prepare($sql_check);
+            $stmt_check->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+            $stmt_check->bindParam(':date', $date);
+            $stmt_check->execute();
+
+            return $stmt_check->rowCount() > 0 ? 'y' : 'n';
+        } catch (PDOException $e) {
+            return 'error' . $e->getMessage();
         }
     }
 }
