@@ -1,0 +1,131 @@
+table {
+  text-align: center;
+}
+
+.table-row th {
+  color: black !important;
+  color: sandybrown;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #eee !important;
+}
+tr td.cap {
+  text-transform: capitalize;
+}
+.training-details {
+  margin-top: 20px;
+}
+
+.status-badge {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.status-completed {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.status-pending {
+  background-color: #ffc107;
+  color: #000;
+}
+
+strong {
+  color: #696cff !important;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: monospace !important;
+}
+
+h1 {
+  font-family: monospace !important;
+  text-align: center;
+  margin-bottom: 10px !important;
+}
+.li {
+  box-shadow: 0px 0px 7px 1px #e3dbdb !important;
+  list-style: none !important;
+}
+.custom-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 300px;
+}
+
+#calendar {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Custom event style */
+.fc-event {
+  background-color: #696cff;
+  color: #f2f2f2 !important;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+/* Highlight today's date */
+.fc-today {
+  background-color: #f0f0f0;
+}
+.list-shadow {
+  box-shadow: 0px 0px 7px 1px #e3dbdb !important;
+  list-style: none !important;
+}
+.contract {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.contract-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contract-details {
+  margin-bottom: 20px;
+}
+
+.terms {
+  margin-top: 40px;
+}
+
+.signature {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.signature-line {
+  width: 200px;
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+}
+
+.signature-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.company-info {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+}
