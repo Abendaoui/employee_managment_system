@@ -17,12 +17,12 @@
     totalRevenueChartOptions = {
       series: [
         {
-          name: 'Presents',
-          data: [24, 26, 21, 26, 25, 23, 29],
+          name: "Heure d'arrivée",
+          data: [208, 208, 208, 208, 208, 208, 208],
         },
         {
-          name: 'Absents',
-          data: [6, 4, 9, 4, 5, 7, 1],
+          name: 'Travaillé',
+          data: [189, 107, 199, 184, 195, 197, 191],
         },
       ],
       chart: {
@@ -77,7 +77,7 @@
         },
       },
       xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul'],
         labels: {
           style: {
             fontSize: '13px',
@@ -278,7 +278,6 @@
     )
     totalRevenueChart.render()
   }
-
 
   // Profit Report Line Chart
   // --------------------------------------------------------------------
@@ -605,4 +604,3 @@
     weeklyExpenses.render()
   }
 })()
-

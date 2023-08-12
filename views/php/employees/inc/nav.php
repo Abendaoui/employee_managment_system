@@ -38,7 +38,7 @@ $count = $employee->getReceivedReportCountToday();
             <?php if ($report > 0) : ?>
               <a class="dropdown-item" href="../pages/send_history.php">
                 <i class='bx bxs-report'></i>
-                <span class="align-middle">You Have New Reports</span>
+                <span class="align-middle">Vous avez de nouveaux rapports</span>
               </a>
             <?php endif ?>
           </li>
@@ -46,7 +46,7 @@ $count = $employee->getReceivedReportCountToday();
             <li>
               <a class="dropdown-item" href="../pages/list_formations.php">
                 <i class="bx bx bx-file"></i>
-                <span class="align-middle">You Have New Formations</span>
+                <span class="align-middle">Vous avez de nouvelles formations</span>
               </a>
             </li>
           <?php endif ?>
@@ -87,7 +87,7 @@ $count = $employee->getReceivedReportCountToday();
           <li>
             <a class="dropdown-item" href="profile.php">
               <i class="bx bx-user me-2"></i>
-              <span class="align-middle">My Profile</span>
+              <span class="align-middle">Mon profil</span>
             </a>
           </li>
           <li>
@@ -96,7 +96,7 @@ $count = $employee->getReceivedReportCountToday();
           <li>
             <a class="dropdown-item" href="../helpers/logout.php">
               <i class="bx bx-power-off me-2"></i>
-              <span class="align-middle">Log Out</span>
+              <span class="align-middle">Se déconnecter</span>
             </a>
           </li>
         </ul>

@@ -16,8 +16,8 @@ ob_start();
   <div class="col-12 col-lg-10 mx-auto">
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Leave Request</h5>
-        <small class="text-muted float-end">Enter the details below</small>
+        <h5 class="mb-0">Demande de congé</h5>
+        <small class="text-muted float-end">Entrez les détails ci-dessous</small>
       </div>
       <div class="card-body">
         <form action="../helpers/process_request.php" method="post">
@@ -25,7 +25,7 @@ ob_start();
           <div class="mb-3">
             <label class="form-label" for="leave_type">Leave Type</label>
             <select class="form-select" id="leave_type" name="leave_type" required>
-              <option value="" selected disabled>Select Leave Type</option>
+              <option value="" selected disabled>Sélectionnez le type de congé</option>
               <?php foreach ($conge_types as $type) : ?>
                 <option value="<?= $type['id_type_conge'] ?>"><?= $type['nom_type_conge'] ?></option>
               <?php endforeach ?>
@@ -33,7 +33,7 @@ ob_start();
           </div>
           <!-- Start Date -->
           <div class="mb-3">
-            <label class="form-label" for="start_date">Start Date</label>
+            <label class="form-label" for="start_date">Date de début</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-calendar"></i></span>
               <input type="date" class="form-control" id="start_date" name="start_date" required />
@@ -41,7 +41,7 @@ ob_start();
           </div>
           <!-- End Date -->
           <div class="mb-3">
-            <label class="form-label" for="end_date">End Date</label>
+            <label class="form-label" for="end_date">Date de fin</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-calendar"></i></span>
               <input type="date" class="form-control" id="end_date" name="end_date" required />
@@ -49,7 +49,7 @@ ob_start();
           </div>
           <!-- Comments -->
           <div class="mb-3">
-            <label class="form-label" for="comments">Comments</label>
+            <label class="form-label" for="comments">commentaires</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-comment"></i></span>
               <textarea id="comments" class="form-control" name="comments" rows="4" placeholder="Enter comments" required></textarea>
@@ -61,7 +61,7 @@ ob_start();
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <?php endif ?>
-          <button type="submit" name="submit" class="btn btn-primary">Submit Request</button>
+          <button type="submit" name="submit" class="btn btn-primary">Envoyer la demande</button>
         </form>
       </div>
     </div>

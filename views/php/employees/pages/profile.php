@@ -16,7 +16,7 @@ ob_start();
 <div class="row">
  <div class="col-md-12">
   <div class="card mb-4">
-   <h5 class="card-header text-center">Profile Details</h5>
+   <h5 class="card-header text-center">Détails du profil</h5>
    <!-- Account -->
    <div class="card-body">
     <div class="d-flex align-items-start align-items-sm-center gap-4 justify-content-center">
@@ -28,11 +28,11 @@ ob_start();
     <form id="formAccountSettings" method="POST" action="../helpers/process_profile.php">
      <div class="row">
       <div class="mb-3 col-md-6">
-       <label for="firstName" class="form-label">First Name</label>
+       <label for="firstName" class="form-label">Prénom</label>
        <input class="form-control text-capitalize" type="text" id="firstName" name="firstName" value="<?= $employee_info['prenom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="lastName" class="form-label">Last Name</label>
+       <label for="lastName" class="form-label">Nom de famille</label>
        <input class="form-control text-capitalize" type="text" name="lastName" id="lastName" value="<?= $employee_info['nom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -40,31 +40,31 @@ ob_start();
        <input class="form-control" type="text" id="email" name="email" value="<?= $_SESSION['email'] ?>" placeholder="john.doe@example.com" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="organization" class="form-label">Job Title</label>
+       <label for="organization" class="form-label">Titre d'emploi</label>
        <input type="text" class="form-control text-capitalize" readonly id="organization" name="organization" value="<?= $employee_info['titre_poste'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label class="form-label" for="dep">Departement</label>
+       <label class="form-label" for="dep">Département</label>
        <input type="text" id="dep" name="dep" readonly class="form-control text-capitalize" value="<?= $employee_info['dep'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label class="form-label" for="dep">Manager</label>
+       <label class="form-label" for="dep">Directeur</label>
        <input type="text" id="dep" name="dep" readonly class="form-control text-capitalize" value="<?= $manager ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="address" class="form-label">Role</label>
+       <label for="address" class="form-label">Rôle</label>
        <input type="text" class="form-control text-capitalize" readonly id="address" name="address" value="Employee" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Date Hired</label>
+       <label for="state" class="form-label">Date d'embauche</label>
        <input class="form-control text-capitalize" readonly type="text" id="state" name="state" value="<?= $employee_info['date_embauché'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="zipCode" class="form-label">Date Birth</label>
+       <label for="zipCode" class="form-label">Date de naissance</label>
        <input type="text" class="form-control text-capitalize" id="zipCode" name="birth" value="<?= $employee_info['date_naissance'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Phone</label>
+       <label for="state" class="form-label">Téléphone</label>
        <input class="form-control text-capitalize" type="text" id="state" name="phone" value="<?= $employee_info['telephone'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -72,7 +72,7 @@ ob_start();
        <input type="text" class="form-control text-capitalize" id="genre" name="genre" value="<?= $employee_info['genre'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="timeZones" class="form-label">Address</label>
+       <label for="timeZones" class="form-label">Adresse</label>
        <input type="text" class="form-control text-capitalize" id="zipCode" name="zipCode" value="<?= $employee_info['adresse'] ?>" />
       </div>
      </div>
@@ -83,8 +83,8 @@ ob_start();
       </div>
      <?php endif ?>
      <div class="mt-2">
-      <button type="submit" class="btn btn-primary me-2">Save changes</button>
-      <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+      <button type="submit" class="btn btn-primary me-2">Sauvegarder les modifications</button>
+      <button type="reset" class="btn btn-outline-secondary">Annuler</button>
      </div>
     </form>
    </div>

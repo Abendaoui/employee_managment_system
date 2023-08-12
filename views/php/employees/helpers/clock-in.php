@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
  $run = $employee->clockIn();
  switch ($run) {
   case 'success':
-   $msg = 'Successfully';
+   $msg = 'Avec succès';
    $state = true;
    break;
   case 'already':
-   $msg = 'U Already Picked';
+   $msg = 'Déjà choisi';
    break;
   default:
-   $msg = 'Error';
+   $msg = 'Erreur';
    break;
  }
 }

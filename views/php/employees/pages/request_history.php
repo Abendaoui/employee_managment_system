@@ -11,20 +11,20 @@ ob_start();
  <div class="col-12">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Received Leave Requests</h5>
-    <small class="text-muted float-end">All Requests</small>
+    <h5 class="mb-0">Demandes de congé reçues</h5>
+    <small class="text-muted float-end">Toutes les demandes</small>
    </div>
    <div class="card-body">
     <table class="table table-bordered">
      <thead>
       <tr class="table-row">
-       <th>Employee Name</th>
-       <th>Leave Type</th>
-       <th>Start Date</th>
-       <th>End Date</th>
-       <th>Days</th>
-       <th>Status</th>
-       <th>Comments</th>
+       <th>Nom de l'employé</th>
+       <th>Type de congé</th>
+       <th>Date de début</th>
+       <th>Date de fin</th>
+       <th>Jours</th>
+       <th>Statut</th>
+       <th>commentaires</th>
       </tr>
      </thead>
      <tbody>

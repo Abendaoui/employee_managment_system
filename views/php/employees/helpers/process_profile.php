@@ -21,13 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
  $updateResult = $employee->updateEmployee($firstName, $lastName, $email, $dateOfBirth, $phone, $genre, $address);
 
  if ($updateResult === 'success') {
-  $msg = 'Profile updated successfully.';
+  $msg = 'Mise à jour du profil réussie.';
   $state = true;
  } else {
-  $msg = 'Error updating profile: ' . $updateResult; // Handle the error message from the function
+  $msg = 'Erreur lors de la mise à jour du profil: ' . $updateResult; // Handle the error message from the function
  }
 } else {
- $msg = 'Invalid request method.';
+ $msg = 'Méthode de requête invalide.';
 }
 
 // Redirect back to the profile page with the appropriate message and state

@@ -17,14 +17,14 @@ ob_start();
   <div class="col-md-6 offset-md-3">
    <div class="card">
     <div class="card-header">
-     <h5 class="mb-0">Send Report</h5>
+     <h5 class="mb-0">Envoyer un rapport</h5>
     </div>
     <div class="card-body">
      <form action="../helpers/process_send.php" method="POST">
       <div class="mb-3">
-       <label class="form-label" for="leave_type">Recipient</label>
+       <label class="form-label" for="leave_type">Destinataire :</label>
        <select class="form-select text-capitalize" id="leave_type" name="id_rec" required>
-        <option value="" selected disabled>Select The Receipent</option>
+        <option value="" selected disabled>Sélectionnez le destinataire</option>
         <?php foreach ($relatedEmployee as $employee) : ?>
          <option value="<?= $employee['id'] ?>"><?= $employee['full_name'] ?>
           <?php echo $employee['role'] === 'manager' ? ' (Manager)' : '' ?>
@@ -34,17 +34,17 @@ ob_start();
       </div>
       <!-- Recipient Email -->
       <div class="mb-3">
-       <label class="form-label" for="recipient_email">Recipient Email</label>
+       <label class="form-label" for="recipient_email">Destinataire E-mail:</label>
        <div class="input-group input-group-merge">
         <input type="email" class="form-control" id="recipient_email" name="recipient_email" placeholder="john@example.com" aria-label="john@example.com" required />
        </div>
       </div>
       <div class="mb-3">
-       <label class="form-label">Subject:</label>
+       <label class="form-label">Sujet:</label>
        <input type="text" class="form-control" name="report_subject" required>
       </div>
       <div class="mb-3">
-       <label class="form-label">Report Content:</label>
+       <label class="form-label">Contenu du rapport:</label>
        <textarea class="form-control" name="report_content" rows="5" required></textarea>
       </div>
       <?php if (isset($msg) && $msg !== '') : ?>
@@ -53,7 +53,7 @@ ob_start();
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
       <?php endif ?>
-      <button type="submit" name="submit" class="btn btn-primary">Send Report</button>
+      <button type="submit" name="submit" class="btn btn-primary">Envoyer un rapport</button>
      </form>
     </div>
    </div>

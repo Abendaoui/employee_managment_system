@@ -15,17 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
  $status = $employee->submitLeaveRequest($id_conge, $date_start, $date_end, $comment);
  switch ($status) {
   case 'success':
-   $msg = 'Leave request submitted successfully.';
+   $msg = 'Demande de congé soumise avec succès.';
    $state = true;
    break;
   case 'exceed_limit':
-   $msg = 'Error: Total days requested exceed the limit of 10 days.';
+   $msg = 'Erreur : Le nombre total de jours demandés dépasse la limite de 10 jours.';
    break;
   case 'insufficient_leave':
-   $msg = 'Error: Insufficient remaining leave days for the current year.';
+   $msg = 'Erreur : jours de congé restants insuffisants pour l\'année en cours.';
    break;
   default:
-   $msg = 'An error occurred while submitting the leave request.';
+   $msg = 'Une erreur s\'est produite lors de la soumission de la demande de congé.';
    break;
  }
 }

@@ -34,7 +34,7 @@ ob_start();
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
-        You have <?= $report ?> new report(s) and <?= $formation ?> new formation(s) today.
+        Vous avez <?= $report ?> nouveau(x) rapport(s) et <?= $formation ?> nouvelle(s) formation(s) aujourd'hui.
       </div>
     </article>
   <?php endif ?>
@@ -47,11 +47,11 @@ ob_start();
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">Welcome <?= $_SESSION['name'] ?></h5>
+              <h5 class="card-title text-primary">Bonjour <?= $_SESSION['name'] ?></h5>
               <p class="mb-4 text-capitalize">
-                Check your new badge in your profile.
+                Vérifiez votre nouveau badge ici.
               </p>
-              <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#employeeInfoModal">View Employee Info</a>
+              <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#employeeInfoModal">Afficher vos informations</a>
             </div>
           </div>
           <div class="col-sm-5 text-center text-sm-left">
@@ -75,44 +75,44 @@ ob_start();
           </div>
           <div class="modal-body">
             <img src="../../../../assets/img/avatars/<?= $_SESSION['profile'] ?>.png" class="mx-auto d-block mb-3 rounded-circle" height="80" alt="Employee Avatar" />
-            <p><strong>Name:</strong> <?= $_SESSION['name'] ?></p>
-            <p><strong>Department:</strong> <?= $dep['dep'] ?></p>
-            <p><strong>Telephone:</strong> <?= $dep['telephone'] ?></p>
-            <p style="margin-bottom: -12px;"><strong>Job:</strong> <?= $dep['titre_poste'] ?></p>
+            <p><strong>nom et prénom:</strong> <?= $_SESSION['name'] ?></p>
+            <p><strong>Département:</strong> <?= $dep['dep'] ?></p>
+            <p><strong>Téléphone:</strong> <?= $dep['telephone'] ?></p>
+            <p style="margin-bottom: -12px;"><strong>Emploi:</strong> <?= $dep['titre_poste'] ?></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
     </div>
     <!-- /Badge Model -->
-
+    <!-- Clock -->
     <article class="col-lg-4 col-md-12 order-1">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-12 mb-4">
           <div class="card">
-            <div class="card-header">
-              Clock In / Clock Out
+            <div class="card-header text-capitalize">
+              Horloge d'entrée / Horloge de sortie
             </div>
             <div class="card-body d-flex justify-content-between">
               <?php if ($is_clock_in === 'n') : ?>
                 <form action="../helpers/clock-in.php" method="post" class="flex-grow-1 me-2">
                   <div class="mb-3">
-                    <label for="clockIn" class="form-label">Clock In</label>
-                    <button type="submit" class="btn btn-primary" name="submit" id="clockIn">Clock In</button>
+                    <label for="clockIn" class="form-label">Horloge d'entrée</label>
+                    <button type="submit" class="btn btn-primary" name="submit" id="clockIn">Horloge d'entrée</button>
                   </div>
                 </form>
               <?php endif; ?>
               <?php if ($is_clock_out === 'n') : ?>
                 <form action="../helpers/clock-out.php" method="post" class="flex-grow-1">
                   <div class="mb-3">
-                    <label for="clockOut" class="form-label">Clock Out</label>
-                    <button type="submit" class="btn btn-danger" name="submit" id="clockOut">Clock Out</button>
+                    <label for="clockOut" class="form-label">Horloge de sortie</label>
+                    <button type="submit" class="btn btn-danger" name="submit" id="clockOut">Horloge de sortie</button>
                   </div>
                 </form>
               <?php endif; ?>
-              <?php if($is_clock_in === 'y' && $is_clock_out === 'y'): ?>
+              <?php if ($is_clock_in === 'y' && $is_clock_out === 'y') : ?>
                 <h1 style="font-family: monospace;font-size:22px;color:blueviolet;text-align:center">U Complete Ur Day</h1>
               <?php endif; ?>
             </div>
@@ -128,36 +128,36 @@ ob_start();
 
       </div>
     </article>
+    <!-- /Clock -->
     <!-- Total Present -->
     <article class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
       <div class="card">
         <div class="row row-bordered g-0">
           <div class="col-md-12">
-            <h5 class="card-header m-0 me-2 pb-3">Present Static</h5>
+            <h5 class="card-header m-0 me-2 pb-3">Statistiques Des Heures</h5>
             <div id="totalRevenueChart" class="px-2"></div>
           </div>
         </div>
       </div>
     </article>
     <!--/ Total Present -->
-    <!-- Schedule Time -->
+    <!-- Latest Formation -->
     <article class="col-lg-4 col-md-4 order-3">
       <div class="row">
-        <!-- Latest Formation -->
         <article class="col-12 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between pb-0">
               <div class="card-title mb-0">
-                <h5 class="m-0 me-2">Latest Formation</h5>
-                <small class="text-muted">Newly Formation</small>
+                <h5 class="m-0 me-2">Dernière formation</h5>
+                <small class="text-muted">Nouvellement formé</small>
               </div>
               <div class="dropdown">
                 <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-                  <a class="dropdown-item" href="list_formations.php">View All</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+                  <a class="dropdown-item" href="list_formations.php">Voir tout</a>
+                  <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ ob_start();
                       <h6 class="mb-0">
                         <?= $formation['title'] ?>
                       </h6>
-                      <small class="text-muted">By: <?= $_SESSION['name'] ?></small>
+                      <small class="text-muted">Par: <?= $_SESSION['name'] ?></small>
                     </div>
                     <div class="d-flex flex-shrink-0 align-items-center">
                       <small class="text-muted">
@@ -185,10 +185,9 @@ ob_start();
             </div>
           </div>
         </article>
-        <!--/ Latest Formation -->
       </div>
     </article>
-    <!--/ Schedule Time -->
+    <!--/ Latest Formation -->
   </section>
   <!-- /Up -->
   <!-- Down -->
@@ -198,16 +197,16 @@ ob_start();
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Latest Reports</h5>
-            <small class="text-muted">Newly Received Reports</small>
+            <h5 class="m-0 me-2">Derniers rapports</h5>
+            <small class="text-muted">Rapports nouvellement reçus</small>
           </div>
           <div class="dropdown">
             <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="send_history.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="send_history.php">Voir tout</a>
+              <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
             </div>
           </div>
         </div>
@@ -222,7 +221,7 @@ ob_start();
                   <h6 class="mb-0">
                     <?= $report['subject'] ?>
                   </h6>
-                  <small class="text-muted">By: <?= $report['full_name'] ?></small>
+                  <small class="text-muted">Par: <?= $report['full_name'] ?></small>
                 </div>
                 <div class="d-flex flex-shrink-0 align-items-center">
                   <small class="text-muted"><?= date('D - H:i', strtotime($report['date_sent'])) ?></small>
@@ -239,16 +238,16 @@ ob_start();
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Leaves Command</h5>
-            <small class="text-muted">Newly Leaves Command</small>
+            <h5 class="m-0 me-2">Congé Commande</h5>
+            <small class="text-muted">Commande nouvellement conge</small>
           </div>
           <div class="dropdown">
             <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="request_history.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="request_history.php">Voir tout</a>
+              <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
             </div>
           </div>
         </div>
@@ -264,7 +263,7 @@ ob_start();
                 </div>
                 <div class="d-flex flex-column">
                   <h6 class="mb-0"><?= $leave['type'] ?></h6>
-                  <small class="text-muted">By: <?= $leave['full_name'] ?></small>
+                  <small class="text-muted">Par: <?= $leave['full_name'] ?></small>
                 </div>
                 <div class="d-flex flex-shrink-0 align-items-center">
                   <small class="text-muted">

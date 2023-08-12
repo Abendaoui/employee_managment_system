@@ -48,7 +48,7 @@ class Employee
             $end_datetime = "$date" . "T" . "$end_time";
 
             $event = array(
-                'title' => 'Work Schedule',
+                'title' => 'Horaire de travail',
                 'start' => $start_datetime,
                 'end' => $end_datetime
             );

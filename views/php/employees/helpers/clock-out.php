@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
  $run = $employee->clockOut();
  switch ($run) {
   case 'success':
-   $msg = 'Success';
+   $msg = 'Avec succès';
    $state = true;
    break;
   case 'check':
-   $msg = 'U Should Clock In First';
+   $msg = 'Vous devriez pointer en premier';
    break;
   default:
-   $msg = $run;
+   $msg = 'erreur';
    break;
  }
 }
