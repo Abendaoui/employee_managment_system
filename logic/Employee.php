@@ -61,15 +61,16 @@ class Employee
     public function getUserInfo()
     {
         try {
-            $stmt = $this->conn->prepare("SELECT e.*, c.date_debut, c.date_fin, c.type_contrat, c.salaire, c.statut_emploi, c.termes_contrat FROM Employes e
+            $stmt = $this->conn->prepare("SELECT * FROM Employes e
             INNER JOIN Contrats c ON e.id_employe = c.id_employe
+            INNER JOIN departements d ON d.id_departement = e.id_departement
             WHERE e.id_employe = :id");
             $stmt->bindParam(':id', $_SESSION['id']);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log('Error fetching user info: ' . $e->getMessage());
-            return null;
+            return false;
         }
     }
     public function getAllLeaveTypes()
@@ -419,7 +420,6 @@ class Employee
             ];
         }
     }
-
     // Clock the employee
     public function clockIn()
     {
@@ -519,15 +519,17 @@ class Employee
             $employee_id = $_SESSION['id']; // Assuming you have a getId method in the Employee class
             $date = date("Y-m-d");
 
-            $sql_check = "SELECT id_pointage FROM Pointages WHERE id_employe = :employee_id AND date = :date";
+            $sql_check = "SELECT * FROM Pointages WHERE id_employe = :employee_id AND date = :date";
             $stmt_check = $this->conn->prepare($sql_check);
             $stmt_check->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
             $stmt_check->bindParam(':date', $date);
             $stmt_check->execute();
+            $result = $stmt_check->fetch(PDO::FETCH_ASSOC); // Fetch a single row
 
-            return $stmt_check->rowCount() > 0 ? 'y' : 'n';
+            return isset($result['heure_sortie']) ? 'y' : 'n';
         } catch (PDOException $e) {
             return 'error' . $e->getMessage();
         }
     }
+
 }

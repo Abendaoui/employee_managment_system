@@ -2,11 +2,13 @@
 
 require_once 'session_start.php';
 
-if (!$_SESSION['id']) {
+if (!isset($_SESSION['id'])) {
  header('location: ../../login.php');
+ exit;
 }
-if ($_SESSION['role'] === 'manager') {
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'manager') {
  header('location: ../../admin/pages/dashboard.php');
+ exit;
 }
 ?>
 <!DOCTYPE html>

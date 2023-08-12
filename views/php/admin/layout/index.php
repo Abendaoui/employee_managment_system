@@ -4,10 +4,10 @@ require_once 'session_start.php';
 use MyApp\Auth;
 
 $auth = new Auth();
-if (!$_SESSION['id']) {
+if (!isset($_SESSION['id'])) {
   header('location: ../../login.php');
 }
-if ($_SESSION['role'] === 'employé') {
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'employé') {
   header('location: ../../employees/pages/dashboard.php');
 }
 ?>

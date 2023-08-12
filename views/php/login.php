@@ -22,14 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $error = "Invalid credentials. Please try again.";
   }
 }
-if ($_SESSION) {
-  if ($_SESSION['role'] === 'manager') {
+if (!empty($_SESSION)) {
+  if (isset($_SESSION['role']) && $_SESSION['role'] === 'manager') {
     header('location: ./admin/pages/dashboard.php');
+    exit(); // Add an exit to prevent further execution
   }
-  if ($_SESSION['role'] === 'employé') {
+  if (isset($_SESSION['role']) && $_SESSION['role'] === 'employé') {
     header('location: ./employees/pages/dashboard.php');
+    exit(); // Add an exit to prevent further execution
   }
 }
+
 
 
 ?>
@@ -95,7 +98,7 @@ if ($_SESSION) {
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus />
               </div>
-              <div class="form-password-toggle">
+              <div class="form-password-toggle mb-3">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Password</label>
                   <a href="auth-forgot-password-basic.html">
@@ -109,7 +112,10 @@ if ($_SESSION) {
               </div>
               <div class="mb-3">
                 <?php if (isset($error)) : ?>
-                  <small class="text-danger"><?= $error  ?></small>
+                  <div class="alert alert-danger alert-dismissible mb-3" role="alert">
+                    <?= $error ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                 <?php endif ?>
               </div>
               <div class="mb-3">

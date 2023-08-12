@@ -19,9 +19,7 @@ $latestReports = $employee->getLatestReports();
 
 // Clock-Time
 $is_clock_in = $employee->hasClockIn();
-
-// print_r($is_clock_in);
-// exit;
+$is_clock_out = $employee->hasClockOut();
 
 ob_start();
 ?>
@@ -106,12 +104,17 @@ ob_start();
                   </div>
                 </form>
               <?php endif; ?>
-              <form action="../helpers/clock-out.php" method="post" class="flex-grow-1">
-                <div class="mb-3">
-                  <label for="clockOut" class="form-label">Clock Out</label>
-                  <button type="submit" class="btn btn-danger" name="submit" id="clockOut">Clock Out</button>
-                </div>
-              </form>
+              <?php if ($is_clock_out === 'n') : ?>
+                <form action="../helpers/clock-out.php" method="post" class="flex-grow-1">
+                  <div class="mb-3">
+                    <label for="clockOut" class="form-label">Clock Out</label>
+                    <button type="submit" class="btn btn-danger" name="submit" id="clockOut">Clock Out</button>
+                  </div>
+                </form>
+              <?php endif; ?>
+              <?php if($is_clock_in === 'y' && $is_clock_out === 'y'): ?>
+                <h1 style="font-family: monospace;font-size:22px;color:blueviolet;text-align:center">U Complete Ur Day</h1>
+              <?php endif; ?>
             </div>
 
             <?php if (isset($msg) && $msg !== '') : ?>

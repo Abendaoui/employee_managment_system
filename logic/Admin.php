@@ -65,6 +65,25 @@ class Admin
       return [];
     }
   }
+  private function createAuthCredentials($username, $email, $password)
+  {
+    try {
+      // Hash the password
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+      // Insert credentials into the Authentification table
+      $stmt = $this->conn->prepare("INSERT INTO Authentification (nom_utilisateur, email, mot_de_passe) VALUES (:username, :email, :password)");
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $hashedPassword);
+
+      $stmt->execute();
+
+      return 'success';
+    } catch (PDOException $e) {
+      return 'Error creating auth credentials';
+    }
+  }
   public function addManager($prenom, $nom, $email, $titre_poste, $id_departement, $role, $date_embauché, $date_naissance, $telephone, $genre, $profile, $adresse)
   {
     // Check if the email already exists

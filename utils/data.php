@@ -1,45 +1,45 @@
 <?php
 $pages = array(
     array(
-        'page' => 'Dashboard', 'link' => 'dashboard.php',
+        'page' => 'Tableau de bord', 'link' => 'dashboard.php',
         'icon' => 'bx bx-home-circle',
         'keys' => ['dashboard.php']
     ),
     array(
-        'page' => 'My Work Schedule', 'link' => 'my_work_schedule.php',
+        'page' => 'Mon horaire de travail', 'link' => 'my_work_schedule.php',
         'icon' => 'bx bx-calendar',
         'keys' => ['my_work_schedule.php']
     ),
     array(
-        'page' => 'Leave Management', 'link' => 'javascript:void(0);',
+        'page' => 'Gestion des congés', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-time', 'submenus' => array(
-            array('page' => 'Make Request', 'link' => 'request.php'),
-            array('page' => 'Request History', 'link' => 'request_history.php'),
+            array('page' => 'Faire une requête', 'link' => 'request.php'),
+            array('page' => 'Historique des demandes', 'link' => 'request_history.php'),
         ),
         'keys' => ['request.php', 'request_history.php']
     ),
     array(
-        'page' => 'Contracts', 'link' => 'contracts.php',
+        'page' => 'Contrats', 'link' => 'contracts.php',
         'icon' => 'bx bx-file',
         'keys' => ['contracts.php']
     ),
     array(
-        'page' => 'Departments', 'link' => 'departments.php',
+        'page' => 'Départements', 'link' => 'departments.php',
         'icon' => 'bx bx-building',
         'keys' => ['departments.php']
     ),
     array(
-        'page' => 'Reports', 'link' => 'javascript:void(0);',
+        'page' => 'Rapports', 'link' => 'javascript:void(0);',
         'icon' => 'bx bxs-report', 'submenus' => array(
-            array('page' => 'Send Report', 'link' => 'send.php'),
-            array('page' => 'Reports History', 'link' => 'send_history.php'),
+            array('page' => 'Envoyer un rapport', 'link' => 'send.php'),
+            array('page' => 'Historique des rapports', 'link' => 'send_history.php'),
         ),
         'keys' => ['send.php', 'send_history.php']
     ),
     array(
         'page' => 'Formation', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-book', 'submenus' => array(
-            array('page' => 'List Formation', 'link' => 'list_formations.php'),
+            array('page' => 'Liste de Formations', 'link' => 'list_formations.php'),
         ),
         'keys' => ['list_formations.php', 'formation_details.php']
     ),
