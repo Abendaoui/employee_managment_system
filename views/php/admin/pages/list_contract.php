@@ -1,4 +1,8 @@
 <?php
+if (isset($_GET['msg']) && isset($_GET['state'])) {
+ $msg = $_GET['msg'];
+ $state = $_GET['state'];
+}
 require_once '../layout/session_start.php';
 
 use MyApp\Admin;
@@ -46,9 +50,9 @@ ob_start();
            <a class="dropdown-item" href="contract_details.php?id=<?= $contract['id_contrat'] ?>">
             <i class='bx bxs-info-circle bx-tada bx-flip-horizontal'></i> Détails
            </a>
-           <a class="dropdown-item" href="edit_contract.php?id=<?= $x ?>">
+           <a class="dropdown-item" href="edit_contract.php?id=<?= $contract['id_contrat'] ?>">
             <i class="bx bx-edit-alt me-1"></i> Modifier</a>
-           <a class="dropdown-item text-danger" href="delete_contract.php?id=<?= $x ?>"><i class="bx bx-trash me-1"></i> Delete</a>
+           <a class="dropdown-item text-danger" href="../helpers/delete_contract.php?id=<?= $contract['id_contrat'] ?>"><i class="bx bx-trash me-1"></i> Delete</a>
           </div>
          </div>
         </td>
@@ -61,6 +65,13 @@ ob_start();
   </div>
  </div>
 </div>
+<!-- Msg -->
+<?php if (isset($msg) && $msg !== '') : ?>
+ <div class="mt-4 alert alert-<?php echo $state ? 'success' : 'danger';  ?> alert-dismissible mb-3" role="alert">
+  <?= $msg ?>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+ </div>
+<?php endif ?>
 <?php
 $pageContent = ob_get_clean();
 $pageTitle = 'List Of Contracts';

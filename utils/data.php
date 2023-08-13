@@ -95,7 +95,7 @@ $admin_pages = array(
             array('page' => 'Ajouter des départements', 'link' => 'add_dep.php'),
             array('page' => 'Liste des départements', 'link' => 'list_dep.php'),
         ),
-        'keys' => ['add_dep.php', 'list_dep.php']
+        'keys' => ['add_dep.php', 'list_dep.php','edit_dep.php']
     ),
     array(
         'page' => 'Rapports', 'link' => 'javascript:void(0);',
@@ -110,7 +110,7 @@ $admin_pages = array(
         'page' => 'Formation', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-book', 'submenus' => array(
             array('page' => 'Ajouter une formation', 'link' => 'add_formations.php'),
-            array('page' => 'Formation de la liste', 'link' => 'list_formations.php'),
+            array('page' => 'Liste De Formation', 'link' => 'list_formations.php'),
 
         ),
         'keys' => ['list_formations.php', 'formation_details.php', 'add_formations.php']

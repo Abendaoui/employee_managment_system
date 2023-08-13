@@ -1,4 +1,8 @@
 <?php
+if (isset($_GET['msg']) && isset($_GET['state'])) {
+  $msg = $_GET['msg'];
+  $state = $_GET['state'];
+}
 require_once '../layout/session_start.php';
 
 use MyApp\Admin;
@@ -69,6 +73,13 @@ ob_start();
     </table>
   </div>
 </div>
+<!-- Msg -->
+<?php if (isset($msg) && $msg !== '') : ?>
+  <div class="mt-4 alert alert-<?php echo $state ? 'success' : 'danger';  ?> alert-dismissible mb-3" role="alert">
+    <?= $msg ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php endif ?>
 
 <?php
 $pageContent = ob_get_clean();

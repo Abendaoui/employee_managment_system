@@ -178,6 +178,7 @@ class Admin
       return 'Error deleting employee: ' . $e->getMessage(); // Error occurred while deleting employee
     }
   }
+
   // Update
   // Get employee
   public function getEmployeeBySlug($slug)
@@ -442,6 +443,57 @@ class Admin
       return false;
     }
   }
+  public function deleteDep($id)
+  {
+    try {
+      $stmt = $this->conn->prepare("DELETE FROM departements WHERE id_departement = :id");
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      // Check if any rows were affected by the delete operation
+      if ($stmt->rowCount() > 0) {
+        return 'deleted'; // Employee deleted successfully
+      } else {
+        return 'Not Found'; // No employee found with the given ID
+      }
+    } catch (PDOException $e) {
+      error_log('Error deleting employee: ' . $e->getMessage());
+      return 'Error deleting employee: ' . $e->getMessage(); // Error occurred while deleting employee
+    }
+  }
+  public function getDepartmentById($id)
+  {
+    try {
+      $stmt = $this->conn->prepare("SELECT * FROM departements WHERE id_departement = :id");
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+      error_log('Error fetching department: ' . $e->getMessage());
+      return null;
+    }
+  }
+  public function editDepartment($id, $newDepartmentName)
+  {
+    try {
+      $stmt = $this->conn->prepare("UPDATE departements SET nom_departement = :new_name WHERE id_departement = :id");
+      $stmt->bindParam(':new_name', $newDepartmentName, PDO::PARAM_STR);
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      // Check if any rows were affected by the update operation
+      if ($stmt->rowCount() > 0) {
+        return 'updated'; // Department updated successfully
+      } else {
+        return 'Not Found'; // No department found with the given ID
+      }
+    } catch (PDOException $e) {
+      error_log('Error updating department: ' . $e->getMessage());
+      return 'Error updating department: ' . $e->getMessage(); // Error occurred while updating department
+    }
+  }
+
   // Formation Page
   public function addFormation($title, $description, $startDate, $endDate, $recipientIds)
   {
@@ -529,7 +581,24 @@ class Admin
       return false;
     }
   }
+  public function deleteContrat($id)
+  {
+    try {
+      $stmt = $this->conn->prepare("DELETE FROM contrats WHERE id_contrat = :id");
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
 
+      // Check if any rows were affected by the delete operation
+      if ($stmt->rowCount() > 0) {
+        return 'deleted'; // Employee deleted successfully
+      } else {
+        return 'Not Found'; // No employee found with the given ID
+      }
+    } catch (PDOException $e) {
+      error_log('Error deleting employee: ' . $e->getMessage());
+      return 'Error deleting employee: ' . $e->getMessage(); // Error occurred while deleting employee
+    }
+  }
   public function addContract($id_employe, $date_debut, $date_fin, $type_contrat, $salaire, $statut_emploi, $termes_contrat)
   {
     try {

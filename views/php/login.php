@@ -92,18 +92,18 @@ if (!empty($_SESSION)) {
               </div>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-6 text-center">Welcome</h4>
+            <h4 class="mb-6 text-center">Bonjour</h4>
             <form id="formAuthentication" class="mb-3" method="POST">
               <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">Nom d'utilisateur</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus />
               </div>
               <div class="form-password-toggle mb-3">
                 <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password">Password</label>
-                  <a href="auth-forgot-password-basic.html">
-                    <small>Forgot Password?</small>
-                  </a>
+                  <label class="form-label" for="password">Mot de passe</label>
+                  <button type="button" class="mb-2" style="background: transparent;border:none;outline:none" data-bs-toggle="modal" data-bs-target="#modalToggle">
+                    <small>Mot de passe oublié?</small>
+                  </button>
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
@@ -119,12 +119,27 @@ if (!empty($_SESSION)) {
                 <?php endif ?>
               </div>
               <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" name="login" type="submit">Sign in</button>
+                <button class="btn btn-primary d-grid w-100" name="login" type="submit">Se connecter</button>
               </div>
             </form>
           </div>
         </div>
         <!-- /Register -->
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="mt-3">
+      <div class="modal fade" id="modalToggle" aria-labelledby="modalToggleLabel" tabindex="-1" style="display: none" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="btn btn-primary" id="modalToggleLabel">Mot de passe oublié</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Si vous avez oublié votre mot de passe, veuillez contacter votre responsable</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
