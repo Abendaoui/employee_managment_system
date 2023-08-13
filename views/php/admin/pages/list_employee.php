@@ -20,11 +20,11 @@ ob_start();
       <thead class="bg-dark">
         <tr class="text-center head-link">
           <th>ID</th>
-          <th>Full-Name</th>
-          <th>Email</th>
+          <th>Nom et prénom</th>
+          <th>E-mail</th>
           <th>Poste</th>
-          <th>Departement</th>
-          <th>Date Hired</th>
+          <th>Département</th>
+          <th>Date d'embauche</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -57,8 +57,8 @@ ob_start();
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="employee_details.php?slug=<?= $employee['slug'] ?>">
-                    <i class='bx bx-info-circle me-1'></i> Details</a>
-                  <a class="dropdown-item text-danger" href="../helpers/delete_employee.php?id=<?= $employee['id_employe'] ?>"><i class="bx bx-trash me-1"></i> Delete</a>
+                    <i class='bx bx-info-circle me-1'></i> Détails</a>
+                  <a class="dropdown-item text-danger" href="../helpers/delete_employee.php?id=<?= $employee['id_employe'] ?>"><i class="bx bx-trash me-1"></i> Supprimer</a>
                 </div>
               </div>
             </td>

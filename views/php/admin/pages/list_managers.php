@@ -9,19 +9,19 @@ ob_start();
 ?>
 <div class="card">
   <h5 class="card-header text-center" style="color: black !important;font-size:24px;font-weight:bold">
-    List Of Managers
+    Liste des gestionnaires
   </h5>
   <div class="table-responsive text-nowrap mt-3">
     <table class="table table-striped">
       <thead class="bg-dark">
         <tr class="text-center head-link">
           <th>ID</th>
-          <th>Full-Name</th>
-          <th>Email</th>
+          <th>Nom et prénom</th>
+          <th>E-mail</th>
           <th>Poste</th>
-          <th>Departement</th>
-          <th>Date Hired</th>
-          <th>Telephone</th>
+          <th>Département</th>
+          <th>Date d'embauche</th>
+          <th>Téléphone</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -57,9 +57,9 @@ ob_start();
                 </button>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="employee_details.php?slug=<?= $employee['slug'] ?>">
-                    <i class='bx bx-info-circle me-1'></i> Details</a>
+                    <i class='bx bx-info-circle me-1'></i> Détails</a>
                   <a class="dropdown-item text-danger" href="../helpers/delete_manager.php?id=<?= $manager['id_employe'] ?>">
-                    <i class="bx bx-trash me-1"></i> Delete</a>
+                    <i class="bx bx-trash me-1"></i> Supprimer</a>
                 </div>
               </div>
             </td>

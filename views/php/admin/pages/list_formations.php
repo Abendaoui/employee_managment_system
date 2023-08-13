@@ -9,19 +9,19 @@ ob_start();
 ?>
 
 <div class="container mt-4">
-  <h1 class="mt-4">Employee Training Sessions</h1>
+  <h1 class="mt-4">Séances de formation des employés</h1>
 
   <div class="row mt-4">
     <?php if (count($formations)) { ?>
       <?php foreach ($formations as $formation) : ?>
         <div class="col-lg-6 col-12 mx-auto mb-3">
           <div class="card text-center">
-            <div class="card-header">Training Session</div>
+            <div class="card-header">Session de formation</div>
             <div class="card-body">
-              <h5 class="card-title">Title: <?= $formation['title'] ?></h5>
-              <p class="card-text"><strong>Start Date:</strong> <?= $formation['date_start'] ?></p>
-              <p class="card-text"><strong>End Date:</strong> <?= $formation['date_end'] ?></p>
-              <p class="card-text"><strong>Date Sent:</strong><?= date('Y-m-d',strtotime($formation['date_sent'])) ?></p>
+              <h5 class="card-title">Titre: <?= $formation['title'] ?></h5>
+              <p class="card-text"><strong>Date de début:</strong> <?= $formation['date_start'] ?></p>
+              <p class="card-text"><strong>Date de fin:</strong> <?= $formation['date_end'] ?></p>
+              <p class="card-text"><strong>Date d'envoi:</strong><?= date('Y-m-d',strtotime($formation['date_sent'])) ?></p>
               <a href="formation_details.php?id=<?= $formation['id_formation'] ?>" class="btn btn-primary mt-3">Details</a>
             </div>
           </div>
@@ -31,7 +31,7 @@ ob_start();
       <div class="col-lg-6 col-12 mx-auto mb-3 p-5">
         <div class="card text-center p-5">
           <h3>
-            No Training To Dispaly
+            Aucune formation à afficher
           </h3>
         </div>
       <?php } ?>

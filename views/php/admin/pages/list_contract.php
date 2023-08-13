@@ -11,19 +11,19 @@ ob_start();
  <div class="col-12">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">List of Employees Contracts</h5>
-    <small class="text-muted float-end">All Contracts</small>
+    <h5 class="mb-0">Liste des contrats des employés</h5>
+    <small class="text-muted float-end">Tous les contrats</small>
    </div>
    <div class="card-body">
     <table class="table table-bordered">
      <thead>
       <tr class="table-row">
-       <th>Employee Name</th>
-       <th>Start Date</th>
-       <th>End Date</th>
-       <th>Contract Type</th>
-       <th>Salary</th>
-       <th>Employment Status</th>
+       <th>Nom de l'employé</th>
+       <th>Date de début</th>
+       <th>Date de fin</th>
+       <th>Type de contrat</th>
+       <th>Salaire</th>
+       <th>Statut d'emploi</th>
        <th>Action</th>
       </tr>
      </thead>
@@ -44,10 +44,10 @@ ob_start();
           </button>
           <div class="dropdown-menu">
            <a class="dropdown-item" href="contract_details.php?id=<?= $contract['id_contrat'] ?>">
-            <i class='bx bxs-info-circle bx-tada bx-flip-horizontal'></i> Details
+            <i class='bx bxs-info-circle bx-tada bx-flip-horizontal'></i> Détails
            </a>
            <a class="dropdown-item" href="edit_contract.php?id=<?= $x ?>">
-            <i class="bx bx-edit-alt me-1"></i> Edit</a>
+            <i class="bx bx-edit-alt me-1"></i> Modifier</a>
            <a class="dropdown-item text-danger" href="delete_contract.php?id=<?= $x ?>"><i class="bx bx-trash me-1"></i> Delete</a>
           </div>
          </div>

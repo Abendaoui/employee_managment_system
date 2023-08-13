@@ -11,21 +11,21 @@ ob_start();
  <div class="col-xl">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Add New Employee</h5>
+    <h5 class="mb-0">Ajouter un nouvel employé</h5>
    </div>
    <div class="card-body">
     <form action="../helpers/add_emp_action.php" method="post" enctype="multipart/form-data">
      <!-- Full-Name -->
      <div class="row row-space mb-3">
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-fullname">First Name</label>
+       <label class="form-label" for="basic-icon-default-fullname">Prénom</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
         <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="John" name="prenom" required />
        </div>
       </div>
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-fullname">Last Name</label>
+       <label class="form-label" for="basic-icon-default-fullname">Nom de famille</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
         <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Doe" name="nom" required />
@@ -35,14 +35,14 @@ ob_start();
      <!-- Email & Job -->
      <div class="row row-space mb-3">
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Email</label>
+       <label class="form-label" for="basic-icon-default-company">E-mail</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-envelope"></i></span>
         <input type="email" id="basic-icon-default-company" class="form-control" placeholder="john@gmail.com" name="email" required />
        </div>
       </div>
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Job Title</label>
+       <label class="form-label" for="basic-icon-default-company">Titre d'emploi</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-briefcase'></i></span>
         <input type="text" id="basic-icon-default-company" class="form-control" placeholder="Programmer" name="titre_poste" required />
@@ -52,14 +52,14 @@ ob_start();
      <!-- Date Birth & Date Hired -->
      <div class="row row-space mb-3">
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Date Birth</label>
+       <label class="form-label" for="basic-icon-default-company">Date de naissance</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-time-five'></i></span>
         <input type="date" id="basic-icon-default-company" class="form-control" name="date_naissance" required />
        </div>
       </div>
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Date Hired</label>
+       <label class="form-label" for="basic-icon-default-company">Date d'embauche</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-time-five'></i></span>
         <input type="date" id="basic-icon-default-company" class="form-control" name="date_embauché" required />
@@ -69,14 +69,14 @@ ob_start();
      <!-- Telephone & Profile-->
      <div class="row row-space mb-3">
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Telephone</label>
+       <label class="form-label" for="basic-icon-default-company">Téléphone</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-phone"></i></span>
         <input type="tel" id="basic-icon-default-company" class="form-control" placeholder="06/07********" name="telephone" required />
        </div>
       </div>
       <div class="col-6">
-       <label class="form-label" for="basic-icon-default-company">Photo Profile</label>
+       <label class="form-label" for="basic-icon-default-company">Photo</label>
        <div class="input-group input-group-merge">
         <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bxs-file-image'></i></span>
         <input type="file" id="basic-icon-default-company" accept="image/png" class="form-control" name="profile" required />
@@ -90,7 +90,7 @@ ob_start();
        <div class="form-check">
         <input class="form-check-input" type="radio" name="genre" value="male" id="flexRadioDefault1">
         <label class="form-check-label" for="flexRadioDefault1">
-         Male
+         Mâle
         </label>
        </div>
       </div>
@@ -98,14 +98,14 @@ ob_start();
        <div class="form-check">
         <input class="form-check-input" type="radio" name="genre" value="female" id="flexRadioDefault1">
         <label class="form-check-label" for="flexRadioDefault1">
-         Female
+         Femelle
         </label>
        </div>
       </div>
      </div>
      <!-- Address -->
      <div class="mb-3">
-      <label class="form-label" for="basic-icon-default-company">Date Hired</label>
+      <label class="form-label" for="basic-icon-default-company">Adresse</label>
       <div class="input-group input-group-merge">
        <span id="basic-icon-default-company2" class="input-group-text"><i class='bx bx-location-plus'></i></span>
        <textarea id="basic-icon-default-company" class="form-control" name="adresse" placeholder="IMM 15 APPRT 12 Street City 12250" required></textarea>

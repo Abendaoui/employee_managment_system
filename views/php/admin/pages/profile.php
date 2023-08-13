@@ -14,7 +14,7 @@ ob_start();
 <div class="row">
  <div class="col-md-12">
   <div class="card mb-4">
-   <h5 class="card-header">Profile Details</h5>
+   <h5 class="card-header">Détails du profil</h5>
    <!-- Account -->
    <div class="card-body">
     <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -26,11 +26,11 @@ ob_start();
     <form id="formAccountSettings" method="POST" action="../helpers/process_profile.php">
      <div class="row">
       <div class="mb-3 col-md-6">
-       <label for="firstName" class="form-label">First Name</label>
+       <label for="firstName" class="form-label">Prénom</label>
        <input class="form-control" type="text" id="firstName" name="firstName" value="<?= $currentAdmin['prenom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="lastName" class="form-label">Last Name</label>
+       <label for="lastName" class="form-label">Nom de famille</label>
        <input class="form-control" type="text" name="lastName" id="lastName" value="<?= $currentAdmin['nom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -38,27 +38,27 @@ ob_start();
        <input class="form-control" type="text" id="email" name="email" value="<?= $_SESSION['email'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="organization" class="form-label">Job Title</label>
+       <label for="organization" class="form-label">Titre d'emploi</label>
        <input type="text" class="form-control" id="organization" name="organization" value="<?= $currentAdmin['titre_poste'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label class="form-label" for="dep">Departement</label>
+       <label class="form-label" for="dep">Département</label>
        <input type="text" id="dep" name="dep" class="form-control" value="<?= $currentAdmin['nom_departement'] ?>" readonly />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="address" class="form-label">Role</label>
+       <label for="address" class="form-label">Rôle</label>
        <input type="text" class="form-control" id="role" name="role" value="Manager" readonly />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Date Hired</label>
+       <label for="state" class="form-label">Date d'embauche</label>
        <input class="form-control" type="text" id="hired" name="hired" value="<?= $currentAdmin['date_embauché'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="zipCode" class="form-label">Date Birth</label>
+       <label for="zipCode" class="form-label">Date de naissance</label>
        <input type="text" class="form-control" id="birth" name="birth" value="<?= $currentAdmin['date_naissance'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Phone</label>
+       <label for="state" class="form-label">Téléphone</label>
        <input class="form-control" type="text" id="phone" name="phone" value="<?= $currentAdmin['telephone'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -66,7 +66,7 @@ ob_start();
        <input type="text" class="form-control" id="genre" name="genre" value="<?= $currentAdmin['genre'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="timeZones" class="form-label">Address</label>
+       <label for="timeZones" class="form-label">Adresse</label>
        <input type="text" class="form-control" id="zipCode" name="zipCode" value="<?= $currentAdmin['adresse'] ?>" />
       </div>
      </div>
@@ -77,8 +77,8 @@ ob_start();
       </div>
      <?php endif ?>
      <div class="mt-2">
-      <button type="submit" class="btn btn-primary me-2">Save changes</button>
-      <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+      <button type="submit" class="btn btn-primary me-2">Sauvegarder les modifications</button>
+      <button type="reset" class="btn btn-outline-secondary">Annuler</button>
      </div>
     </form>
    </div>

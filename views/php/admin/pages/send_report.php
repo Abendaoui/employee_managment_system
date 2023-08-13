@@ -16,16 +16,16 @@ ob_start();
  <div class="col-12 col-lg-10 mx-auto">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Send Report</h5>
-    <small class="text-muted float-end">Enter the details below</small>
+    <h5 class="mb-0">Envoyer un rapport</h5>
+    <small class="text-muted float-end">Entrez les détails ci-dessous</small>
    </div>
    <div class="card-body">
     <form action="../helpers/process_send_report.php" method="post">
      <!-- Manager Name -->
      <div class="mb-3">
-      <label class="form-label" for="leave_type">Recipient</label>
+      <label class="form-label" for="leave_type">Destinataire</label>
       <select class="form-select text-capitalize" id="leave_type" name="id_rec" required>
-       <option value="" selected disabled>Select The Recipient</option>
+       <option value="" selected disabled>Sélectionnez le destinataire</option>
        <?php foreach ($employees as $employee) : ?>
         <option value="<?= $employee['id_employe'] ?>">
          <?= $employee['nom'] . ' ' . $employee['prenom'] ?>
@@ -36,7 +36,7 @@ ob_start();
      </div>
      <!-- Recipient Email -->
      <div class="mb-3">
-      <label class="form-label" for="recipient_email">Recipient Email</label>
+      <label class="form-label" for="recipient_email">Destinataire E-mail</label>
       <div class="input-group input-group-merge">
        <span class="input-group-text"><i class="bx bx-envelope"></i></span>
        <input type="email" class="form-control" id="recipient_email" name="recipient_email" placeholder="john@example.com" aria-label="john@example.com" required />
@@ -44,7 +44,7 @@ ob_start();
      </div>
      <!-- Subject -->
      <div class="mb-3">
-      <label class="form-label" for="subject">Subject</label>
+      <label class="form-label" for="subject">Sujet</label>
       <div class="input-group input-group-merge">
        <span class="input-group-text"><i class="bx bx-message-square"></i></span>
        <input type="text" class="form-control" id="subject" name="report_subject" placeholder="Report Subject" required />
@@ -52,7 +52,7 @@ ob_start();
      </div>
      <!-- Content -->
      <div class="mb-3">
-      <label class="form-label" for="content">Content</label>
+      <label class="form-label" for="content">Contenu</label>
       <div class="input-group input-group-merge">
        <span class="input-group-text"><i class="bx bx-comment"></i></span>
        <textarea id="content" class="form-control" name="report_content" rows="4" placeholder="Enter report content here" required></textarea>
@@ -65,7 +65,7 @@ ob_start();
        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
      <?php endif ?>
-     <button type="submit" name="submit" class="btn btn-primary">Send Report</button>
+     <button type="submit" name="submit" class="btn btn-primary">Envoyer Rapport</button>
     </form>
    </div>
   </div>

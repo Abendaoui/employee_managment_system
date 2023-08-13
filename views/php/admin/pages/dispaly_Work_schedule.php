@@ -13,8 +13,8 @@ ob_start();
 <div class="col-xl">
   <div class="card mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Work Schedule for <?php echo date('F Y'); ?></h5>
-      <small class="text-muted float-end">Monthly Schedule</small>
+      <h5 class="mb-0">Horaire de travail pour <?php echo date('F Y'); ?></h5>
+      <small class="text-muted float-end">Horaire mensuel</small>
     </div>
     <div class="card-body">
       <div class="row">
@@ -33,8 +33,8 @@ ob_start();
               <thead>
                 <tr class="table-row">
                   <th>Date</th>
-                  <th>Start Hour</th>
-                  <th>End Hour</th>
+                  <th>Heure de début</th>
+                  <th>Heure de fin</th>
                 </tr>
               </thead>
               <tbody>

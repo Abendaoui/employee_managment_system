@@ -15,18 +15,18 @@ ob_start();
   <div class="col-12">
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Received Leave Requests</h5>
-        <small class="text-muted float-end">All Requests</small>
+        <h5 class="mb-0">Demandes de congé reçues</h5>
+        <small class="text-muted float-end">Toutes les demandes</small>
       </div>
       <div class="card-body">
         <table class="table table-bordered overflow-auto">
           <thead>
             <tr class="table-row">
-              <th>Employee Name</th>
-              <th>Leave Type</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Status</th>
+              <th>Nom de l'employé</th>
+              <th>Type de congé</th>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th>Statut</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -65,7 +65,7 @@ ob_start();
             <?php } else { ?>
               <tr>
                 <td colspan="6">
-                  No Conge Demande To Display
+                  Aucun Congé Pour Affichier
                 </td>
               </tr>
             <?php } ?>

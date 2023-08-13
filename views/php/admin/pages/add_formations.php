@@ -16,14 +16,14 @@ ob_start();
  <div class="col-12 col-lg-8 mx-auto">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Add Formation</h5>
-    <small class="text-muted float-end">Enter the details below</small>
+    <h5 class="mb-0">Ajouter une formation</h5>
+    <small class="text-muted float-end">Entrez les détails ci-dessous</small>
    </div>
    <div class="card-body">
     <form action="../helpers/add_formation_action.php" method="POST">
      <!-- Title -->
      <div class="mb-3">
-      <label class="form-label" for="title">Formation Title</label>
+      <label class="form-label" for="title">Titre de formation</label>
       <input type="text" class="form-control" id="title" name="title" required />
      </div>
      <!-- Description -->
@@ -34,7 +34,7 @@ ob_start();
      <!-- Receipent -->
      <!-- Recipients -->
      <div class="row mb-3 row-space mx-auto">
-      <label class="form-label">Select Recipients</label>
+      <label class="form-label">Sélectionnez les destinataires</label>
       <?php foreach ($employees as $employee) : ?>
        <div class="form-check col-3">
         <input class="form-check-input" type="checkbox" name="recipients[]" value="<?= $employee['id_employe'] ?>" id="recipient_<?= $employee['id_employe'] ?>">
@@ -47,12 +47,12 @@ ob_start();
 
      <!-- Start Date -->
      <div class="mb-3">
-      <label class="form-label" for="date_start">Start Date</label>
+      <label class="form-label" for="date_start">Date de début</label>
       <input type="date" class="form-control" id="date_start" name="date_start" required />
      </div>
      <!-- End Date -->
      <div class="mb-3">
-      <label class="form-label" for="date_end">End Date</label>
+      <label class="form-label" for="date_end">Date de fin</label>
       <input type="date" class="form-control" id="date_end" name="date_end" required />
      </div>
      <!-- Msg -->
@@ -62,7 +62,7 @@ ob_start();
        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
      <?php endif ?>
-     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+     <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
     </form>
    </div>
   </div>

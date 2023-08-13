@@ -22,11 +22,11 @@ ob_start();
     <form id="formAccountSettings" method="POST" action="../helpers/process_profile.php">
      <div class="row">
       <div class="mb-3 col-md-6">
-       <label for="firstName" class="form-label">First Name</label>
+       <label for="firstName" class="form-label">Prénom</label>
        <input class="form-control" readonly type="text" id="firstName" name="firstName" value="<?= $current_employee['prenom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="lastName" class="form-label">Last Name</label>
+       <label for="lastName" class="form-label">Nom de famille</label>
        <input class="form-control" readonly type="text" name="lastName" id="lastName" value="<?= $current_employee['nom'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -34,31 +34,31 @@ ob_start();
        <input class="form-control" readonly type="text" id="email" name="email" value="<?= $_SESSION['email'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="organization" class="form-label">Job Title</label>
+       <label for="organization" class="form-label">Titre d'emploi</label>
        <input type="text" class="form-control" readonly id="organization" name="organization" value="<?= $current_employee['titre_poste'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label class="form-label" for="dep">Departement</label>
+       <label class="form-label" for="dep">Département</label>
        <input type="text" id="dep" name="dep" class="form-control" readonly value="<?= $current_employee['nom_departement'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label class="form-label" for="dep">Manager</label>
+       <label class="form-label" for="dep">Directeur</label>
        <input type="text" id="dep" name="dep" class="form-control" readonly value="<?= $_SESSION['name']?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="address" class="form-label">Role</label>
+       <label for="address" class="form-label">Rôle</label>
        <input type="text" class="form-control" readonly id="role" name="role" value="Employé" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Date Hired</label>
+       <label for="state" class="form-label">Date d'embauche</label>
        <input class="form-control" readonly type="text" id="hired" name="hired" value="<?= $current_employee['date_embauché'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="zipCode" class="form-label">Date Birth</label>
+       <label for="zipCode" class="form-label">Date de naissance</label>
        <input type="text" class="form-control" readonly id="birth" name="birth" value="<?= $current_employee['date_naissance'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="state" class="form-label">Phone</label>
+       <label for="state" class="form-label">Téléphone</label>
        <input class="form-control" readonly type="text" id="phone" name="phone" value="<?= $current_employee['telephone'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
@@ -66,7 +66,7 @@ ob_start();
        <input type="text" class="form-control" readonly id="genre" name="genre" value="<?= $current_employee['genre'] ?>" />
       </div>
       <div class="mb-3 col-md-6">
-       <label for="timeZones" class="form-label">Address</label>
+       <label for="timeZones" class="form-label">Adresse</label>
        <input type="text" class="form-control" readonly id="zipCode" name="zipCode" value="<?= $current_employee['adresse'] ?>" />
       </div>
      </div>
@@ -77,6 +77,6 @@ ob_start();
 </div>
 <?php
 $pageContent = ob_get_clean();
-$pageTitle = 'Update Employee';
+$pageTitle = $current_employee['nom'] . ' ' . $current_employee['prenom'];
 require_once '../layout/index.php';
 ?>

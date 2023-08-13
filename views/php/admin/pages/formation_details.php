@@ -22,16 +22,16 @@ ob_start();
      <p class="card-text"><strong>Description:</strong>
       <?= $target_formation['description'] ?>
      </p>
-     <p class="card-text"><strong>Start Date:</strong> <?= $target_formation['date_start'] ?></p>
-     <p class="card-text"><strong>End Date:</strong> <?= $target_formation['date_end'] ?></p>
-     <p class="card-text"><strong>Sender:</strong> <?= $_SESSION['name']; ?>
+     <p class="card-text"><strong>Date de début:</strong> <?= $target_formation['date_start'] ?></p>
+     <p class="card-text"><strong>Date de fin:</strong> <?= $target_formation['date_end'] ?></p>
+     <p class="card-text"><strong>Expéditeur:</strong> <?= $_SESSION['name']; ?>
      </p>
-     <p class="card-text"><strong>Status:</strong>
+     <p class="card-text"><strong>Statut:</strong>
       <span class="status-badge status-<?= $target_formation['status'] ?>">
        <?= $target_formation['status'] ?>
       </span>
     </p>
-     <p class="card-text"><strong>Date Sent:</strong> <?= $target_formation['date_sent'] ?></p>
+     <p class="card-text"><strong>Date d'envoi:</strong> <?= $target_formation['date_sent'] ?></p>
     </div>
    </div>
   </div>

@@ -9,14 +9,14 @@ ob_start();
  <div class="col-12 col-lg-10 mx-auto">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Add Department</h5>
-    <small class="text-muted float-end">Enter Department Details</small>
+    <h5 class="mb-0">Ajouter un département</h5>
+    <small class="text-muted float-end">Entrez les détails du département</small>
    </div>
    <div class="card-body">
     <form action="../helpers/add_dep_action.php" method="POST">
      <!-- Department Name -->
      <div class="mb-3">
-      <label class="form-label" for="department_name">Department Name</label>
+      <label class="form-label" for="department_name">Nom du département</label>
       <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Enter department name" />
      </div>
      <?php if (isset($msg) && $msg !== '') : ?>
@@ -25,7 +25,7 @@ ob_start();
        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
      <?php endif ?>
-     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+     <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
     </form>
    </div>
   </div>

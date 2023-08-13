@@ -26,7 +26,7 @@ ob_start();
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
       <div class="toast-body">
-        You have <?= $report ?> new report(s) today.
+        Vous avez <?= $report ?> nouveau(x) rapport(s) aujourd'hui.
       </div>
     </article>
   <?php endif ?>
@@ -39,11 +39,11 @@ ob_start();
         <div class="d-flex align-items-end row">
           <div class="col-sm-7">
             <div class="card-body">
-              <h5 class="card-title text-primary">Welcome <?= $_SESSION['name'] ?></h5>
+              <h5 class="card-title text-primary">Bonjour <?= $_SESSION['name'] ?></h5>
               <p class="mb-4 text-capitalize">
-                Check your new badge in your profile.
+                Vérifiez votre nouveau badge ici.
               </p>
-              <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#employeeInfoModal">View Employee Info</a>
+              <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#employeeInfoModal">Afficher les informations</a>
             </div>
           </div>
           <div class="col-sm-5 text-center text-sm-left">
@@ -67,12 +67,12 @@ ob_start();
           </div>
           <div class="modal-body">
             <img src="../../../../assets/img/avatars/<?= $_SESSION['profile'] ?>.png" class="mx-auto d-block mb-3 rounded-circle" height="80" alt="Employee Avatar" />
-            <p><strong>Name:</strong> <?= $_SESSION['name'] ?></p>
-            <p><strong>Department:</strong> <?= $manager['nom_departement'] ?></p>
-            <p><strong>Telephone:</strong> <?= $manager['telephone'] ?></p>
+            <p><strong>nom et prénom:</strong> <?= $_SESSION['name'] ?></p>
+            <p><strong>Département:</strong> <?= $manager['nom_departement'] ?></p>
+            <p><strong>Téléphone:</strong> <?= $manager['telephone'] ?></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ ob_start();
                   <i class='bx bx-user' style="font-size: 45px;color:tomato"></i>
                 </div>
               </div>
-              <span class="fw-semibold d-block mb-1">Employee Count</span>
+              <span class="fw-semibold d-block mb-1">Nombre d'employés</span>
               <h3 class="card-title mb-2">
                 <?= $static['employee'] ?>
               </h3>
@@ -108,7 +108,7 @@ ob_start();
                   <i class='bx bx-user-circle' style="font-size: 45px;color:pink"></i>
                 </div>
               </div>
-              <span>Manager Count</span>
+              <span>Nombre de gestionnaires</span>
               <h3 class="card-title text-nowrap mb-1">
                 <?= $static['manager'] ?>
               </h3>
@@ -125,7 +125,7 @@ ob_start();
         <div class="row row-bordered g-0">
           <div class="col-md-12">
             <h5 class="card-header m-0 me-2 pb-3">Employee Absence</h5>
-            <div id="totalRevenueChart" class="px-2"></div>
+            <div id="totalRevenueChart2" class="px-2"></div>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@ ob_start();
                   <i class="bx bx-building-house" style="font-size: 45px;color:salmon"></i>
                 </div>
               </div>
-              <span class="d-block mb-1">Department Count</span>
+              <span class="d-block mb-1">Nombre de départements</span>
               <h3 class="card-title text-nowrap mb-2">
                 <?= $static['department'] ?>
               </h3>
@@ -160,7 +160,7 @@ ob_start();
                   <i class='bx bx-time' style="font-size: 45px;color:blueviolet"></i>
                 </div>
               </div>
-              <span class="fw-semibold d-block mb-1">Employees on Leave</span>
+              <span class="fw-semibold d-block mb-1">Employés en congé</span>
               <h3 class="card-title mb-2">
                 <?= $static['leaves'] ?>
               </h3>
@@ -172,23 +172,24 @@ ob_start();
     <!-- /Static -->
   </section>
   <!-- /Up -->
+  <!-- #########################"" -->
   <!-- Down -->
   <section class="row">
     <!-- Latest Report -->
-    <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+    <article class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Latest Reports</h5>
-            <small class="text-muted">Newly Received Reports</small>
+            <h5 class="m-0 me-2">Derniers rapports</h5>
+            <small class="text-muted">Rapports nouvellement reçus</small>
           </div>
           <div class="dropdown">
             <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="report_history.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="report_history.php">Voir tout</a>
+              <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
             </div>
           </div>
         </div>
@@ -203,7 +204,7 @@ ob_start();
                   <h6 class="mb-0">
                     <?= $report['subject'] ?>
                   </h6>
-                  <small class="text-muted">By: <?= $report['full_name'] ?></small>
+                  <small class="text-muted">Par: <?= $report['full_name'] ?></small>
                 </div>
                 <div class="d-flex flex-shrink-0 align-items-center">
                   <small class="text-muted"><?= date('D - H:i', strtotime($report['date_sent'])) ?></small>
@@ -213,23 +214,23 @@ ob_start();
           </ul>
         </div>
       </div>
-    </div>
+    </article>
     <!--/ Latest Report -->
     <!-- Latest Leaves Command -->
-    <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+    <article class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Leaves Command</h5>
-            <small class="text-muted">Newly Leaves Command</small>
+            <h5 class="m-0 me-2">Commande des feuilles</h5>
+            <small class="text-muted">Commande des nouveaux départs</small>
           </div>
           <div class="dropdown">
             <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="received_request.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="received_request.php">Voir tout</a>
+              <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
             </div>
           </div>
         </div>
@@ -245,7 +246,7 @@ ob_start();
                 </div>
                 <div class="d-flex flex-column">
                   <h6 class="mb-0"><?= $leave['type'] ?></h6>
-                  <small class="text-muted">By: <?= $leave['full_name'] ?></small>
+                  <small class="text-muted">Par: <?= $leave['full_name'] ?></small>
                 </div>
                 <div class="d-flex flex-shrink-0 align-items-center">
                   <small class="text-muted">
@@ -257,23 +258,23 @@ ob_start();
           </ul>
         </div>
       </div>
-    </div>
+    </article>
     <!--/ Latest Leaves Command -->
     <!-- Latest Formation -->
-    <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+    <article class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
       <div class="card h-100">
         <div class="card-header d-flex align-items-center justify-content-between pb-0">
           <div class="card-title mb-0">
-            <h5 class="m-0 me-2">Latest Formation</h5>
-            <small class="text-muted">Newly Formation</small>
+            <h5 class="m-0 me-2">Commande des feuilles</h5>
+            <small class="text-muted">Commande des nouveaux départs</small>
           </div>
           <div class="dropdown">
             <button class="btn p-0" type="button" id="latestReports" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="bx bx-dots-vertical-rounded"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="latestReports">
-              <a class="dropdown-item" href="list_formations.php">View All</a>
-              <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+              <a class="dropdown-item" href="list_formations.php">Voir tout</a>
+              <a class="dropdown-item" href="javascript:void(0);">Rafraîchir</a>
             </div>
           </div>
         </div>
@@ -288,7 +289,7 @@ ob_start();
                   <h6 class="mb-0">
                     <?= $formation['title'] ?>
                   </h6>
-                  <small class="text-muted">By: <?= $_SESSION['name'] ?></small>
+                  <small class="text-muted">Par: <?= $_SESSION['name'] ?></small>
                 </div>
                 <div class="d-flex flex-shrink-0 align-items-center">
                   <small class="text-muted">
@@ -300,7 +301,7 @@ ob_start();
           </ul>
         </div>
       </div>
-    </div>
+    </article>
     <!--/ Latest Formation -->
   </section>
   <!-- /Down -->

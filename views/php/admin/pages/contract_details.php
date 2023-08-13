@@ -22,34 +22,34 @@ ob_start();
   $employmentStatus = $contract['statut_emploi'];
   $terms = $contract['termes_contrat'];
  ?>
-  <h1>Contract Details</h1>
+  <h1>Détails du contrat</h1>
   <table class="table table-bordered">
    <tr>
-    <td><strong>Employee Name:</strong></td>
+    <td><strong>Nom de l'employé:</strong></td>
     <td><?= $employeeName ?></td>
    </tr>
    <tr>
-    <td><strong>Start Date:</strong></td>
+    <td><strong>Date de début:</strong></td>
     <td><?= $startDate ?></td>
    </tr>
    <tr>
-    <td><strong>End Date:</strong></td>
+    <td><strong>Date de fin:</strong></td>
     <td><?= $endDate ?></td>
    </tr>
    <tr>
-    <td><strong>Contract Type:</strong></td>
+    <td><strong>Type de contrat:</strong></td>
     <td><?= $contractType ?></td>
    </tr>
    <tr>
-    <td><strong>Salary:</strong></td>
+    <td><strong>Salaire:</strong></td>
     <td><?= $salary ?> Dh</td>
    </tr>
    <tr>
-    <td><strong>Employment Status:</strong></td>
+    <td><strong>Statut d'emploi:</strong></td>
     <td><?= $employmentStatus ?></td>
    </tr>
    <tr>
-    <td><strong>Terms of Contract:</strong></td>
+    <td><strong>Termes du contrat:</strong></td>
     <td>
      <ul>
       <?php
@@ -62,7 +62,7 @@ ob_start();
    </tr>
   </table>
  <?php } else { ?>
-  <p>Contract not found.</p>
+  <p>Contrat introuvable.</p>
  <?php } ?>
 </div>
 

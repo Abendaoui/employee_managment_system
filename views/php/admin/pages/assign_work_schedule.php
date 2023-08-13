@@ -15,18 +15,18 @@ ob_start();
  <div class="col-12 col-lg-8 mx-auto">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">Add Work Schedule For August</h5>
-    <small class="text-muted float-end">Enter the details below</small>
+    <h5 class="mb-0">Ajouter un horaire de travail pour août</h5>
+    <small class="text-muted float-end">Entrez les détails ci-dessous</small>
    </div>
    <div class="card-body">
     <form action="../helpers/assign_action.php" method="POST">
      <!-- Employee -->
      <div class="mb-3">
-      <label class="form-label" for="employee_name">Employee Name</label>
+      <label class="form-label" for="employee_name">Nom de l'employé</label>
       <div class="input-group input-group-merge">
        <span class="input-group-text"><i class="bx bx-user"></i></span>
        <select class="form-select" name="employee_id" id="employee_name" aria-label="Select Employee">
-        <option value="" disabled selected>Select an Employee</option>
+        <option value="" disabled selected>Sélectionnez un employé</option>
         <?php foreach ($employees as $employee) : ?>
          <option value="<?= $employee['id_employe'] ?>">
           <?php echo $employee['nom'] . ' ' . $employee['prenom'] ?>
@@ -38,14 +38,14 @@ ob_start();
      <!-- clock-in clock-out -->
      <div class="row mb-3 row-space">
       <div class="col-6">
-       <label class="form-label" for="shift_start_time">Shift Start Time</label>
+       <label class="form-label" for="shift_start_time">Heure de début du quart de travail</label>
        <div class="input-group input-group-merge">
         <span class="input-group-text"><i class="bx bx-time"></i></span>
         <input type="time" class="form-control" id="shift_start_time" name="heure_entree" />
        </div>
       </div>
       <div class="col-6">
-       <label class="form-label" for="shift_end_time">Shift End Time</label>
+       <label class="form-label" for="shift_end_time">Heure de fin d'équipe</label>
        <div class="input-group input-group-merge">
         <span class="input-group-text"><i class="bx bx-time"></i></span>
         <input type="time" class="form-control" id="shift_end_time" name="heure_sortie" />
@@ -54,7 +54,7 @@ ob_start();
      </div>
      <!-- Date Day -->
      <div class="mb-3">
-      <label class="form-label" for="work_date">Work Date</label>
+      <label class="form-label" for="work_date">Date de travail</label>
       <div class="input-group input-group-merge">
        <span class="input-group-text"><i class="bx bx-calendar"></i></span>
        <input type="date" class="form-control" id="work_date" name="date_travail" />
@@ -67,7 +67,7 @@ ob_start();
        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
      <?php endif ?>
-     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+     <button type="submit" name="submit" class="btn btn-primary">Ajouter</button>
     </form>
    </div>
   </div>

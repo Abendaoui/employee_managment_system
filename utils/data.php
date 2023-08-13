@@ -46,71 +46,71 @@ $pages = array(
 );
 $admin_pages = array(
     array(
-        'page' => 'Dashboard', 'link' => 'dashboard.php',
+        'page' => 'Tableau de bord', 'link' => 'dashboard.php',
         'icon' => 'bx bx-home-circle',
         'keys' => ['dashboard.php']
     ),
     array(
-        'page' => 'Managers', 'link' => 'javascript:void(0);', 'icon' => 'bx bx-user-circle',
+        'page' => 'Gestionnaires', 'link' => 'javascript:void(0);', 'icon' => 'bx bx-user-circle',
         'keys' => ['add_manager.php', 'list_managers.php'], 'submenus' => array(
-            array('page' => 'Add Manager', 'link' => 'add_manager.php'),
-            array('page' => 'List Of Managers', 'link' => 'list_managers.php'),
+            array('page' => 'Ajouter un gestionnaire', 'link' => 'add_manager.php'),
+            array('page' => 'Liste des gestionnaires', 'link' => 'list_managers.php'),
         )
     ),
     array(
-        'page' => 'Employees', 'link' => 'javascript:void(0);', 'icon' => 'bx bx-user', 'keys' => ['add_employee.php', 'list_employee.php'], 'submenus' => array(
-            array('page' => 'Add Employee', 'link' => 'add_employee.php'),
-            array('page' => 'List Of Employees', 'link' => 'list_employee.php'),
+        'page' => 'Employés', 'link' => 'javascript:void(0);', 'icon' => 'bx bx-user', 'keys' => ['add_employee.php', 'list_employee.php'], 'submenus' => array(
+            array('page' => 'Ajouter un employé', 'link' => 'add_employee.php'),
+            array('page' => 'Liste des employés', 'link' => 'list_employee.php'),
         )
     ),
     array(
-        'page' => 'Work Schedule', 'link' => 'javascript:void(0);',
+        'page' => 'Horaire de travail', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-calendar', 'keys' => ['work_schedule.php'],
         'submenus' => array(
-            ['page' => 'Assign Work Schedule', 'link' => 'assign_work_schedule.php'],
-            ['page' => 'Dispaly Work Schedule', 'link' => 'dispaly_Work_schedule.php'],
+            ['page' => 'Attribuer un horaire de travail', 'link' => 'assign_work_schedule.php'],
+            ['page' => 'Afficher le programme de travail', 'link' => 'dispaly_Work_schedule.php'],
         ),
         'keys' => ['assign_work_schedule.php', 'dispaly_Work_schedule.php']
     ),
     array(
-        'page' => 'Leave Management', 'link' => 'javascript:void(0);',
+        'page' => 'Gestion des congés', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-time', 'keys' => ['request.php', 'request_history.php'],
         'submenus' => array(
-            array('page' => 'Received Requsets', 'link' => 'received_request.php'),
-            array('page' => 'Employees Request History', 'link' => 'request_history.php'),
+            array('page' => 'Requêtes reçues', 'link' => 'received_request.php'),
+            array('page' => 'Historique des demandes des employés', 'link' => 'request_history.php'),
         ),
         'keys' => ['request_history.php', 'received_request.php', 'request_details.php']
     ),
     array(
-        'page' => 'Contracts', 'link' => 'javascript:void(0);',
+        'page' => 'Contrats', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-file', 'submenus' => array(
-            array('page' => 'Add Contract', 'link' => 'add_contract.php'),
-            array('page' => 'List Of Contracts', 'link' => 'list_contract.php'),
+            array('page' => 'Ajouter un contrat', 'link' => 'add_contract.php'),
+            array('page' => 'Liste des contrats', 'link' => 'list_contract.php'),
         ),
         'keys' => ['add_contract.php', 'list_contract.php', 'contract_details.php']
     ),
     array(
-        'page' => 'Departments', 'link' => 'javascript:void(0);',
+        'page' => 'Départements', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-building', 'submenus' => array(
-            array('page' => 'Add Departments', 'link' => 'add_dep.php'),
-            array('page' => 'List Of Departments', 'link' => 'list_dep.php'),
+            array('page' => 'Ajouter des départements', 'link' => 'add_dep.php'),
+            array('page' => 'Liste des départements', 'link' => 'list_dep.php'),
         ),
         'keys' => ['add_dep.php', 'list_dep.php']
     ),
     array(
-        'page' => 'Reports', 'link' => 'javascript:void(0);',
+        'page' => 'Rapports', 'link' => 'javascript:void(0);',
         'icon' => 'bx bxs-report',
         'submenus' => array(
-            array('page' => 'Send Report', 'link' => 'send_report.php'),
-            array('page' => 'Reports History', 'link' => 'report_history.php'),
+            array('page' => 'Envoyer un rapport', 'link' => 'send_report.php'),
+            array('page' => 'Historique des rapports', 'link' => 'report_history.php'),
         ),
         'keys' => ['send_report.php', 'report_history.php']
     ),
     array(
         'page' => 'Formation', 'link' => 'javascript:void(0);',
         'icon' => 'bx bx-book', 'submenus' => array(
-            array('page' => 'Add Formation', 'link' => 'add_formations.php'),
-            array('page' => 'List Formation', 'link' => 'list_formations.php'),
+            array('page' => 'Ajouter une formation', 'link' => 'add_formations.php'),
+            array('page' => 'Formation de la liste', 'link' => 'list_formations.php'),
 
         ),
         'keys' => ['list_formations.php', 'formation_details.php', 'add_formations.php']

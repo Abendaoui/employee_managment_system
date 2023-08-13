@@ -13,16 +13,16 @@ ob_start();
  <div class="col-xl">
   <div class="card mb-4">
    <div class="card-header d-flex justify-content-between align-items-center">
-    <h5 class="mb-0">List of Departments</h5>
-    <small class="text-muted float-end">View Departments</small>
+    <h5 class="mb-0">Liste des départements</h5>
+    <small class="text-muted float-end">Voir les départements</small>
    </div>
    <div class="card-body">
     <table class="table table-bordered">
      <thead>
       <tr class="table-row">
        <th>ID</th>
-       <th>Department Name</th>
-       <th>Manager</th>
+       <th>Nom du département</th>
+       <th>Directeur</th>
        <th>Actions</th>
       </tr>
      </thead>
