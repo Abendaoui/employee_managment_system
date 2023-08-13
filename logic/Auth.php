@@ -22,7 +22,8 @@ class Auth
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     // ($user && password_verify($password, $user['mot_de_passe']))
-    if ($user && $password === $user['mot_de_passe']) {
+    //($user && $password === $user['mot_de_passe'])
+    if ($user && password_verify($password, $user['mot_de_passe'])) {
       $employee = $this->getEmployeeByUserId($user['email']);
       if ($employee) {
         session_start();

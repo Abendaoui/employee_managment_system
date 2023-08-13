@@ -11,10 +11,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
  $dep_name = $_POST['department_name'];
  $run = $admin->addDepartment($dep_name);
  if ($run) {
-  $msg = 'Successfully added';
+  $msg = 'Ajouté avec succès';
   $state = true;
  } else {
-  $msg = 'Failed to add department';
+  $msg = 'Échec de l\'ajout du département';
  }
 }
 header("location: ../pages/add_dep.php?msg=$msg&state=$state");

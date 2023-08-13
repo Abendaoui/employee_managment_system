@@ -15,10 +15,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
  $selectedRecipients = isset($_POST['recipients']) ? $_POST['recipients'] : [];
  $run = $admin->addFormation($title, $desc, $start, $end, $selectedRecipients);
  if ($run) {
-  $msg = 'Formation Added successfully';
+  $msg = 'Formation ajoutée avec succès';
   $state = true;
  } else {
-  $msg = 'Formation Failed';
+  $msg = 'Échec de la formation';
  }
 }
 header("location: ../pages/add_formations.php?msg=$msg&state=$state");

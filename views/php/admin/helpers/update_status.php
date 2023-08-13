@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $update_result = $admin->updateDemandeCongeStatus($id_demande_conge, $new_status);
 
   if ($update_result) {
-   $msg = 'Status Updated Successfully';
+   $msg = 'Statut mis à jour avec succès';
    $state = true;
   } else {
-   $msg = 'Failed To Update';
+   $msg = 'Échec de mise à jour';
   }
  }
 }

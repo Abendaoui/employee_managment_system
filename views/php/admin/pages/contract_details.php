@@ -14,7 +14,7 @@ ob_start();
  $contract = $admin->getContractById($id);
 
  if ($contract) {
-  $employeeName = "John Doe"; // Replace this with the actual employee name
+  $employeeName = $contract['nom'].' '.$contract['prenom']; // Replace this with the actual employee name
   $startDate = $contract['date_debut'];
   $endDate = $contract['date_fin'];
   $contractType = $contract['type_contrat'];

@@ -4,9 +4,7 @@ if (isset($_GET['msg']) && isset($_GET['state'])) {
  $state = $_GET['state'];
 }
 require_once '../layout/session_start.php';
-
 use MyApp\Admin;
-
 $admin = new Admin();
 $contracts = $admin->getAllContracts();
 ob_start();

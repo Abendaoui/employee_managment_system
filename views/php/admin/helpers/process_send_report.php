@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
  $content = $_POST['report_content'];
  $status = $admin->submitReport($id_rec, $email, $subject, $content);
  if ($status) {
-  $msg = "Report Send Successfully";
+  $msg = "Rapport envoyé avec succès";
   $state = true;
  } else {
-  $msg = "Report Send Failure";
+  $msg = "Échec de l'envoi du rapport";
  }
 }
 header("location: ../pages/send_report.php?msg=$msg&state=$state");

@@ -65,7 +65,7 @@ class Admin
       return [];
     }
   }
-  private function createAuthCredentials($username, $email, $password)
+  public function createAuthCredentials($username, $email, $password)
   {
     try {
       // Hash the password
@@ -76,12 +76,13 @@ class Admin
       $stmt->bindParam(':username', $username);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':password', $hashedPassword);
-
       $stmt->execute();
-
-      return 'success';
+      return [
+        'username' => $username,
+        'password' => $password
+      ];
     } catch (PDOException $e) {
-      return 'Error creating auth credentials';
+      return 'Error creating auth credentials' . $e->getMessage();
     }
   }
   public function addManager($prenom, $nom, $email, $titre_poste, $id_departement, $role, $date_embauché, $date_naissance, $telephone, $genre, $profile, $adresse)
@@ -178,7 +179,6 @@ class Admin
       return 'Error deleting employee: ' . $e->getMessage(); // Error occurred while deleting employee
     }
   }
-
   // Update
   // Get employee
   public function getEmployeeBySlug($slug)
@@ -246,6 +246,35 @@ class Admin
       error_log('Error fetching managers with departments: ' . $e->getMessage());
       return [];
     }
+  }
+  public function generateRandomPassword($length = 8)
+  {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $password = '';
+
+    for ($i = 0; $i < $length; $i++) {
+      $index = mt_rand(0, strlen($characters) - 1);
+      $password .= $characters[$index];
+    }
+
+    return $password;
+  }
+  function generateUsername($firstName, $lastName)
+  {
+    $firstName = strtolower($firstName);
+    $lastName = strtolower($lastName);
+
+    // Remove spaces and special characters from names
+    $firstName = preg_replace('/[^a-zA-Z0-9]/', '', $firstName);
+    $lastName = preg_replace('/[^a-zA-Z0-9]/', '', $lastName);
+
+    // Generate a unique username based on the first name and last name
+    $username = $firstName . '_' . $lastName;
+
+    // Check if the generated username already exists in the database
+    // If it does, you can add a unique identifier to the username
+
+    return $username;
   }
 
   public function addEmployee($prenom, $nom, $email, $titre_poste, $role, $date_embauché, $date_naissance, $telephone, $genre, $profile, $adresse)
@@ -571,7 +600,9 @@ class Admin
   public function getContractById($contractId)
   {
     try {
-      $stmt = $this->conn->prepare("SELECT * FROM Contrats WHERE id_contrat = :contractId");
+      $stmt = $this->conn->prepare("SELECT * FROM contrats c
+      INNER JOIN employes e ON e.id_employe = c.id_employe
+      WHERE id_contrat = :contractId");
       $stmt->bindParam(':contractId', $contractId, PDO::PARAM_INT);
       $stmt->execute();
 
@@ -634,6 +665,38 @@ class Admin
     } catch (PDOException $e) {
       error_log('Error getting employees without contract: ' . $e->getMessage());
       return false;
+    }
+  }
+  public function updateContract($id, $date_debut, $date_fin, $type_contrat, $salaire, $statut_emploi, $termes_contrat)
+  {
+    try {
+      $stmt = $this->conn->prepare("UPDATE Contrats
+                                     SET date_debut = :date_debut,
+                                         date_fin = :date_fin,
+                                         type_contrat = :type_contrat,
+                                         salaire = :salaire,
+                                         statut_emploi = :statut_emploi,
+                                         termes_contrat = :termes_contrat
+                                     WHERE id_contrat = :id");
+
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->bindParam(':date_debut', $date_debut);
+      $stmt->bindParam(':date_fin', $date_fin);
+      $stmt->bindParam(':type_contrat', $type_contrat);
+      $stmt->bindParam(':salaire', $salaire);
+      $stmt->bindParam(':statut_emploi', $statut_emploi);
+      $stmt->bindParam(':termes_contrat', $termes_contrat);
+
+      $stmt->execute();
+
+      if ($stmt->rowCount() > 0) {
+        return 'updated'; // Contract updated successfully
+      } else {
+        return 'Not Found'; // No contract found with the given ID
+      }
+    } catch (PDOException $e) {
+      error_log('Error updating contract: ' . $e->getMessage());
+      return 'Error updating contract: ' . $e->getMessage(); // Error occurred while updating contract
     }
   }
   // Report Pages
@@ -721,7 +784,7 @@ class Admin
       $managerRole = 'manager';
 
       // Employee count
-      $stmt1 = $this->conn->prepare("SELECT COUNT(*) AS count FROM employes WHERE role <> :role");
+      $stmt1 = $this->conn->prepare("SELECT COUNT(*) AS count FROM employes WHERE role = :role");
       $stmt1->bindParam(':role', $employeeRole);
       $stmt1->execute();
       $result1 = $stmt1->fetch(PDO::FETCH_ASSOC);
@@ -760,7 +823,7 @@ class Admin
   function getLatestFormation()
   {
     try {
-      $query = "SELECT date_sent,title FROM formations
+      $query = "SELECT distinct(title),date_sent FROM formations
       WHERE id_sender = :id
       ORDER BY date_sent DESC LIMIT :count";
       $count = 6;

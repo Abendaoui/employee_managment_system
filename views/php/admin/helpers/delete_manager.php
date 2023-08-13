@@ -11,17 +11,17 @@ if ($id !== null) {
  $success = $admin->deleteEmployee($id);
  switch ($success) {
   case 'deleted':
-   $msg = 'Successfully Deleted';
+   $msg = 'Supprimé avec succès';
    $state = true;
    break;
   case 'Not Found':
-   $msg = 'No Employee With This ID';
+   $msg = 'Aucun employé avec cet ID';
    break;
   default:
    $msg = $success;
  }
 } else {
- $msg = 'Invalid Employee ID';
+ $msg = 'Numéro d\'employé invalide';
 }
 
 header("location: ../pages/list_managers.php?msg=$msg&state=$state");

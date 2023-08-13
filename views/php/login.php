@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
       exit();
     }
   } else {
-    $error = "Invalid credentials. Please try again.";
+    $error = "Les informations d'identification invalides. Veuillez réessayer.";
   }
 }
 if (!empty($_SESSION)) {

@@ -11,14 +11,14 @@ if ($id !== null) {
  $success = $admin->deleteContrat($id);
  switch ($success) {
   case 'deleted':
-   $msg = 'Successfully Deleted';
+   $msg = 'Supprimé avec succès';
    $state = true;
    break;
   case 'Not Found':
-   $msg = 'No Contrcat With This id';
+   $msg = 'Pas de contrat avec cet identifiant';
    break;
   default:
-   $msg = 'Error';
+   $msg = 'Erreur';
  }
 } else {
  $msg = 'Invalid Employee ID';

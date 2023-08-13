@@ -17,10 +17,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
  $contract_terms = $_POST['contract_terms'];
  $result = $admin->addContract($id, $start_date, $end_date, $contract_type, $salary, $employment_status, $contract_terms);
  if ($result) {
-  $msg = 'Contract Added Successfully';
+  $msg = 'Contrat ajouté avec succès';
   $state = true;
  } else {
-  $msg = 'Contract Failed Added ';
+  $msg = 'Échec du contrat ajouté ';
  }
 }
 header("location: ../pages/add_contract.php?msg=$msg&state=$state");

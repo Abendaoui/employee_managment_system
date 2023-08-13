@@ -11,17 +11,17 @@ if ($id !== null) {
  $success = $admin->deleteDep($id);
  switch ($success) {
   case 'deleted':
-   $msg = 'Successfully Deleted';
+   $msg = 'Supprimé avec succès';
    $state = true;
    break;
   case 'Not Found':
-   $msg = 'No Department With This id';
+   $msg = 'Aucun département avec cet identifiant';
    break;
   default:
-   $msg = 'Error';
+   $msg = 'Erreur';
  }
 } else {
- $msg = 'Invalid Employee ID';
+ $msg = 'Numéro d\'employé invalide';
 }
 
 header("location: ../pages/list_dep.php?msg=$msg&state=$state");

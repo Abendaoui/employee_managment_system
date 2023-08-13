@@ -13,10 +13,10 @@ if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
  $date = $_POST['date_travail'];
  $oparation = $admin->addWorkSchedule($employe_id, $start_hour, $end_hour, $date);
  if ($oparation === "success") {
-  $msg  = 'Successfully added';
+  $msg  = 'Ajouté avec succès';
   $state = true;
  } else {
-  $msg = $oparation;
+  $msg = 'Erreur';
  }
 }
 header("location: ../pages/assign_work_schedule.php?msg=$msg&state=$state");
