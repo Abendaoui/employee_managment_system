@@ -303,11 +303,11 @@
       series: [
         {
           name: 'présent',
-          data: [36, 35, 31, 38, 34, 33, 37],
+          data: [11],
         },
         {
           name: 'absent',
-          data: [4, 5, 9, 2, 6, 7, 3],
+          data: [7],
         },
       ],
       chart: {
@@ -362,7 +362,7 @@
         },
       },
       xaxis: {
-        categories: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul'],
+        categories: ['Aug'],
         labels: {
           style: {
             fontSize: '13px',
