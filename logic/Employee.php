@@ -420,6 +420,60 @@ class Employee
             ];
         }
     }
+    public function getOriginalWorkedHour()
+    {
+        try {
+            $employee_id = $_SESSION['id']; // Replace with the actual employee ID
+            $year = date("Y"); // Current year
+            $month = date("n"); // Current month
+
+            $sql = "SELECT SUM(TIME_TO_SEC(TIMEDIFF(heure_sortie, heure_entree))) AS total_seconds
+            FROM HorairesTravail
+            WHERE id_employe = :employee_id
+            AND YEAR(date_travail) = :year
+            AND MONTH(date_travail) = :month";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+            $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+            $stmt->bindParam(':month', $month, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total_seconds = $result['total_seconds'];
+
+            return floor($total_seconds / 3600);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function getWorkedHours(){
+        try {
+            $employee_id = $_SESSION['id']; // Replace with the actual employee ID
+            $year = date("Y"); // Current year
+            $month = date("n"); // Current month
+
+            $sql = "SELECT SUM(TIME_TO_SEC(TIMEDIFF(heure_sortie, heure_entree))) AS total_seconds
+            FROM Pointages
+            WHERE id_employe = :employee_id
+            AND YEAR(date) = :year
+            AND MONTH(date) = :month";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':employee_id', $employee_id, PDO::PARAM_INT);
+            $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+            $stmt->bindParam(':month', $month, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total_seconds = $result['total_seconds'];
+
+            return floor($total_seconds / 3600);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
     // Clock the employee
     public function clockIn()
     {
@@ -531,5 +585,4 @@ class Employee
             return 'error' . $e->getMessage();
         }
     }
-
 }

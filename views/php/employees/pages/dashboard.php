@@ -21,6 +21,13 @@ $latestReports = $employee->getLatestReports();
 $is_clock_in = $employee->hasClockIn();
 $is_clock_out = $employee->hasClockOut();
 
+//Chart
+$originalWorkedHours = $employee->getOriginalWorkedHour();
+$workedHours = $employee->getWorkedHours();
+// print_r($originalWorkedHours);
+// echo '<br>';
+// print_r($workedHours);
+// exit;
 ob_start();
 ?>
 <main class="container-xxl flex-grow-1 container-p-y">

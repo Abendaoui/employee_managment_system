@@ -11,9 +11,9 @@ atl9ayha f assets/db/
 05 => kayn jouj anwa3 users 
 
 employee 
-        username : eren
-        password : adil2001
+        username : eren_yeger
+        password : uAerHJpz
 
 manager 
-        username : Abendaoui
-        password : adil2001
+        username : nok_nobel
+        password : jFUdnlB6
