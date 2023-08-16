@@ -229,6 +229,21 @@ class Admin
       return 'error' . $e->getMessage(); // Return error code
     }
   }
+  public function updateProfilePhoto($newProfilePhoto)
+  {
+    try {
+      $stmt = $this->conn->prepare("UPDATE employes SET profile = :newProfilePhoto WHERE id_employe = :adminId");
+      $stmt->bindParam(':newProfilePhoto', $newProfilePhoto);
+      $stmt->bindParam(':adminId', $_SESSION['id'], PDO::PARAM_INT);
+      $stmt->execute();
+      $_SESSION['profile'] = $newProfilePhoto;
+      return true;
+    } catch (PDOException $e) {
+      error_log('Error updating profile photo: ' . $e->getMessage());
+      return false;
+    }
+  }
+
   // Employee Page
   public function getAllEmployeessWithDepartments()
   {

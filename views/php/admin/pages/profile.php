@@ -4,6 +4,11 @@ if (isset($_GET['msg']) && isset($_GET['state'])) {
  $msg = $_GET['msg'];
  $state = $_GET['state'];
 }
+if (isset($_GET['m']) && isset($_GET['s'])) {
+ $m = $_GET['m'];
+ $s = $_GET['s'];
+}
+
 
 use MyApp\Admin;
 
@@ -17,9 +22,31 @@ ob_start();
    <h5 class="card-header">Détails du profil</h5>
    <!-- Account -->
    <div class="card-body">
-    <div class="d-flex align-items-start align-items-sm-center gap-4">
+    <form action="../helpers/edit_photo_process.php" enctype="multipart/form-data" class="d-flex align-items-start align-items-sm-center gap-4" method="POST">
      <img src="../../../../assets/img/avatars/<?= $_SESSION['profile'] ?>.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
-    </div>
+     <div class="button-wrapper">
+      <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+       <span class="d-none d-sm-block">Télécharger une nouvelle photo</span>
+       <i class="bx bx-upload d-block d-sm-none"></i>
+       <input type="file" id="upload" name="upload" class="account-file-input" hidden accept="image/png" />
+      </label>
+      <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+       <i class="bx bx-reset d-block d-sm-none"></i>
+       <span class="d-none d-sm-block">Réinitialiser</span>
+      </button>
+      <button type="submit" id='img' name="save" class="btn btn-success mb-4">
+       <i class='bx bx-save d-block d-sm-none'></i>
+       <span class="d-none d-sm-block">Sauvegarder</span>
+      </button>
+      <p class="text-muted mb-0">PNG autorisé. Taille maximale de 800K</p>
+     </div>
+    </form>
+    <?php if (isset($m) && $m !== '') : ?>
+     <div class="alert alert-<?php echo $s ? 'success' : 'danger';  ?> alert-dismissible mb-3 mt-3 col-4 mx-auto" role="alert">
+      <?= $m ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+     </div>
+    <?php endif ?>
    </div>
    <hr class="my-0" />
    <div class="card-body">
